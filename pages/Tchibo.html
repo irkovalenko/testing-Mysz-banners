@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <title>Tchibo</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        height: 100%;
+      }
+    </style>
+
+    <meta name="viewport" content="user-scalable=yes, width=320" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700&subset=latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:500&subset=latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script type="text/javascript">
+      window.click = function () {
+        window.open("", "_blank");
+      };
+    </script>
+  </head>
+
+  <body>
+    <div
+      id="tchibofamilyrichmedia320x480final_hype_container"
+      class="HYPE_document"
+      style="
+        margin: auto;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      "
+    >
+      <script
+        type="text/javascript"
+        charset="utf-8"
+        src="../resources/Tchibo/script.js"
+      ></script>
+    </div>
+
+    <div style="display: none" aria-hidden="true"></div>
+
+    <script>
+      const videoTrackerConfig = {
+        start: "{start_event_url}",
+        firstQuartile: "{first_quartile_event_url}",
+        midpoint: "{midpoint_event_url}",
+        thirdQuartile: "{third_quartile_event_url}",
+        complete: "{complete_event_url}",
+      };
+
+      window.addEventListener("load", function () {
+        const video = document.getElementById("videom");
+
+        if (!video || !videoTrackerConfig) return;
+
+        const { start, firstQuartile, midpoint, thirdQuartile, complete } =
+          videoTrackerConfig;
+
+        let quartiles = {
+          start: { url: start, triggered: false, threshold: 0 },
+          firstQuartile: {
+            url: firstQuartile,
+            triggered: false,
+            threshold: 0.25,
+          },
+          midpoint: { url: midpoint, triggered: false, threshold: 0.5 },
+          thirdQuartile: {
+            url: thirdQuartile,
+            triggered: false,
+            threshold: 0.75,
+          },
+          complete: { url: complete, triggered: false, threshold: 0.99 },
+        };
+
+        video.addEventListener("timeupdate", function () {
+          let watchedPercentage = video.currentTime / video.duration;
+          for (let key in quartiles) {
+            let event = quartiles[key];
+            if (!event.triggered && watchedPercentage > event.threshold) {
+              console.log(event.url);
+              new Image().src = event.url;
+              event.triggered = true;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

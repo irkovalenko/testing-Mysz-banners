@@ -54,6 +54,8 @@ body {
   position: relative;
   background-color: #000;
   border-radius: 4px;
+  width: 260px; 
+  height: 217px
 }
 
 .preview-frame {

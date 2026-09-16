@@ -1,18 +1,3 @@
-// generate-gallery.js
-//
-// Scans ./pages for banner HTML files (e.g. Biedronka.html, Mazda.html),
-// extracts each banner's pixel dimensions from its filename if present
-// (e.g. "Mazda_RichMedia_320x480_final.html" -> 320x480), and writes out
-// index.html with a clickable, live iframe preview of every banner.
-//
-// Expected structure:
-//   pages/
-//     Biedronka.html
-//     Mazda.html
-//   resources/
-//     Biedronka/   (assets referenced by pages/Biedronka.html)
-//     Mazda/       (assets referenced by pages/Mazda.html)
-//
 // Run with: node generate-gallery.js
 
 const fs = require("fs");
@@ -21,12 +6,10 @@ const path = require("path");
 const PAGES_DIR = path.join(__dirname, "..", "pages");
 const OUTPUT_FILE = path.join(__dirname, "..", "index.html");
 
-// Fallback size used when a filename doesn't contain a WxH pattern.
 const DEFAULT_WIDTH = 300;
 const DEFAULT_HEIGHT = 250;
 
-// Max width/height a thumbnail preview box is allowed to take up.
-// The iframe is loaded at its real size, then scaled down to fit inside this.
+
 const THUMB_MAX_WIDTH = 260;
 const THUMB_MAX_HEIGHT = 260;
 
@@ -47,7 +30,6 @@ function extractDimensions(fileName) {
 }
 
 function formatLabel(fileName) {
-  // "Mazda_RichMedia_320x480_final.html" -> "Mazda RichMedia 320x480 final"
   return fileName.replace(/\.html?$/i, "").replace(/[_-]+/g, " ").trim();
 }
 
