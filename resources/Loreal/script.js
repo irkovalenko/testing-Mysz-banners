@@ -21,7 +21,7 @@
         (e = !0));
       return e;
     }
-    var l = "/resources/Loreal",
+    var l = "../resources/Loreal",
       f = "Loreal_MNY_Lifter_rich_slider_320x480_adaptive_web",
       g = "lorealmnylifterrichslider320x480adaptiveweb_hype_container";
     if (false == !1)
