@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <title>Garmin Cycling</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        height: 100%;
+      }
+    </style>
+
+    <meta name="viewport" content="user-scalable=yes, width=320" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700&subset=latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:500&subset=latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <style>
+      body {
+        line-height: 0;
+      }
+    </style>
+
+    <script src="https://st.hybrid.ai/hybridcreativesdk.js"></script>
+
+    <script type="text/javascript">
+      window.action1 = function () {
+        window._hyb_creative_sdk.registerCustomBanner1Event(); //right_arrow_click
+      };
+      window.action2 = function () {
+        window._hyb_creative_sdk.registerCustomBanner2Event(); //left_arrow_click
+      };
+      window.action3 = function () {
+        window._hyb_creative_sdk.registerCustomBanner3Event(); //maps_click
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      id="garmincyclingrichrotate320x480adaptiveapr26new_hype_container"
+      class="HYPE_document"
+      style="
+        margin: auto;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      "
+    >
+      <script
+        type="text/javascript"
+        charset="utf-8"
+        src="../resources/Garmin_Cycling/script.js"
+      ></script>
+    </div>
+
+    <div style="display: none" aria-hidden="true">
+      <div></div>
+      <div>300 m</div>
+      <div>Adgar Park West - budynek A Al. Jerozolimskie 181, Warszawa</div>
+    </div>
+
+    <script>
+      const points = [
+        {
+          Adres:
+            "Adgar Park West - budynek A\nAl. Jerozolimskie 181, 02-222 Warszawa",
+          "Google Maps":
+            "https://www.google.com/maps/place/Garmin+Polska+Sp.+z+o.o./@52.2109971,20.9522719,21z/data=!3m1!5s0x471ecb568d4edf49:0xcaa6d51d5e87fbe0!4m14!1m7!3m6!1s0x471ecb56ed88e71f:0x69152216213468e8!2sKompleks+Adgar+Park+West!8m2!3d52.2110091!4d20.9524228!16s%2Fg%2F11b6d5k1wd!3m5!1s0x471ecb56f2c7f605:0xb4ef1e4a838588e3!8m2!3d52.2110358!4d20.9524844!16s%2Fg%2F11b7kdsz14?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D",
+          Latitude: "52.21104355951708",
+          Longitude: "20.952485158652898",
+        },
+      ];
+      var me = {
+        lat: "{lt}",
+        lon: "{ln}",
+      };
+
+      function getLength(p1, p2) {
+        var er = 6371;
+        var latDelta = ((p2.lat - p1.lat) * Math.PI) / 180;
+        var lonDelta = ((p2.lon - p1.lon) * Math.PI) / 180;
+        var lat1Rad = (p1.lat * Math.PI) / 180;
+        var lat2Rad = (p2.lat * Math.PI) / 180;
+        var a =
+          Math.sin(latDelta / 2) * Math.sin(latDelta / 2) +
+          Math.sin(lonDelta / 2) *
+            Math.sin(lonDelta / 2) *
+            Math.cos(lat1Rad) *
+            Math.cos(lat2Rad);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return er * c;
+      }
+
+      function find(my) {
+        var arr = [];
+        for (var i = 0; i < points.length; i++) {
+          var point = {
+            lat: parseFloat(points[i].Latitude),
+            lon: parseFloat(points[i].Longitude),
+            address: points[i].Adres,
+            googleMapsUrl: points[i]["Google Maps"],
+          };
+          var dist = getLength(my, point);
+          point.dist = +dist.toFixed(1);
+          arr.push(point);
+        }
+        return arr;
+      }
+
+      var places = find(me);
+      places.sort(function (a, b) {
+        return a.dist - b.dist;
+      });
+
+      window.onload = function () {
+        window._hyb_creative_sdk.init({
+          sid: "{seanceid}",
+          trackingDomain: "{tracking_domain}",
+        });
+
+        const address = document.getElementById("adress");
+        const distance = document.getElementById("distance");
+        window.nearestPlace = places[0];
+
+        if (address) address.innerText = window.nearestPlace.address;
+
+        let distInKm = window.nearestPlace.dist;
+        if (distance) {
+          if (typeof distInKm !== "number" || isNaN(distInKm)) {
+            distance.innerText = ">10km";
+          } else if (distInKm === 0) {
+            distance.innerText = "0m";
+          } else if (distInKm < 1) {
+            distance.innerText = (distInKm * 1000).toFixed(0) + "m";
+          } else {
+            distance.innerText = distInKm.toFixed(1) + "km";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
