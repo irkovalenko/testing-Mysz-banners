@@ -35,7 +35,7 @@
             b =
               null != d
                 ? d.indexOf(
-                    "..resources/Biedronka/script.js",
+                    "../resources/Biedronka/script.js",
                   )
                 : -1;
           if (-1 != b) {
