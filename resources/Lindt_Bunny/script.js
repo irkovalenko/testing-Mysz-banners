@@ -122,7 +122,7 @@
       {
         name: "VolumeUp123",
         source:
-          'function(hypeDocument, element, event) {\t\n\t\t\tvar video123 = hypeDocument.getElementById("video123");\n\tvideo123.volume = 0.5;\n\tvideo123.muted = true;\n}',
+          'function(hypeDocument, element, event) {\n  var video123 = hypeDocument.getElementById("video123");\n  if (!video123) return;\n  video123.volume = 0.5;\n  video123.muted = true;\n}',
         identifier: "10",
       },
     ];
