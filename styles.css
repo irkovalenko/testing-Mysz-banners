@@ -11,12 +11,23 @@ body {
   color: #e6e6e6;
 }
 
-.page-header {
-  margin-bottom: 2rem;
+header {
+  margin-bottom: 3rem;
 }
 
-.page-header h1 {
-  margin: 0 0 0.4rem;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.header h1 {
+  margin: 0 0 1rem;
   font-size: 1.8rem;
   color: #f2f2f2;
 }
@@ -25,6 +36,27 @@ body {
   margin: 0;
   color: #8a8a8a;
   font-size: 0.9rem;
+}
+
+.nav {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 5px;
+  color: #f2f2f2;
+}
+
+.nav a {
+  color: #a9bfd6;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  text-decoration: none;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: orange;
 }
 
 .gallery {
@@ -54,8 +86,8 @@ body {
   position: relative;
   background-color: #000;
   border-radius: 4px;
-  width: 260px; 
-  height: 217px
+  width: 260px;
+  height: 217px;
 }
 
 .preview-frame {
