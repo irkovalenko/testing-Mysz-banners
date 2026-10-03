@@ -1,4 +1,3 @@
-// js/data/tools.js
 export const tools = [
   { name: "After Effects", image: "after-effects.png" },
   { name: "Figma", image: "figma.png" },
