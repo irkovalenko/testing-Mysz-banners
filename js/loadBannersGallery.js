@@ -1,12 +1,11 @@
-import { loadComponent } from "./loadComponent.js";
+import { banners } from "./data/banners.js";
+import { createBannerGallery } from "./components/bannerGallery.js";
 import { fitPreviews } from "./fitPreviews.js";
-import "./components/bannerModal.js";
+import "./components/bannerModal.js"; // sets up the modal on import
 
-const galleryUrl = new URL(
-  "../components/banner_gallery.html",
-  import.meta.url,
-);
+const container = document.querySelector("#banner_gallery");
 
-await loadComponent("banner_gallery", galleryUrl);
-
-fitPreviews(document.querySelector("#banner_gallery"));
+if (container) {
+  container.innerHTML = createBannerGallery(banners);
+  fitPreviews(container);
+}
