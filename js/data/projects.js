@@ -9,13 +9,12 @@ export const projects = [
       "Animated advertising banners created for online campaigns, most featuring interactive Rich Media.",
     description:
       "I created a range of animated advertising banners for online campaigns. Most were interactive Rich Media experiences, combining motion, responsive layouts and direct viewer interaction in compact 320 × 480 formats.",
-    image: "",
+    image: "resources/images/projects_placeholders/hybrid.png",
     imageWidth: 320,
     imageHeight: 480,
     tone: "coral",
     kind: "banners",
     role: "Design · Animation · Rich Media",
-    nav: "pages/projects/banners.html",
   },
   {
     slug: "4am",
@@ -32,7 +31,6 @@ export const projects = [
     tone: "blue",
     kind: "video",
     role: "Visual identity · Motion",
-    nav: "",
   },
   {
     slug: "web",
@@ -51,7 +49,6 @@ export const projects = [
     kind: "web",
     role: "UI design · Visual identity",
     externalUrl: "https://www.perelyn.com/",
-    nav: "",
   },
   {
     slug: "contests",
@@ -70,7 +67,6 @@ export const projects = [
     kind: "contest",
     role: "Direction · Animation",
     externalUrl: "https://filmfreeway.com/projects/4420973",
-    nav: "",
   },
   {
     slug: "hobby",
@@ -88,6 +84,5 @@ export const projects = [
     tone: "lime",
     kind: "gallery",
     role: "Illustration · Animation",
-    nav: "",
   },
 ];

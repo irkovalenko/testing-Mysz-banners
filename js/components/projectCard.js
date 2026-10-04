@@ -1,6 +1,11 @@
+const siteRoot = new URL("../../", import.meta.url);
 export function createProjectCard(project) {
+  const href = new URL(
+    `pages/projects/project.html?p=${project.slug}`,
+    siteRoot,
+  ).href;
   return `
-    <a class="work-card tone-${project.tone}" href="${project.nav}">
+    <a class="work-card tone-${project.tone}" href="${href}">
       <img class="work-card-image" src="${project.image}" alt=""
            width="${project.imageWidth}" height="${project.imageHeight}" loading="lazy" />
       <div class="work-card-overlay"></div>

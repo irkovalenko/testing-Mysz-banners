@@ -6,8 +6,7 @@ dialog.innerHTML = `
     <p class="banner-modal-title"></p>
     <button type="button" class="banner-modal-close" aria-label="Close banner">✕</button>
   </div>
-  <iframe class="banner-modal-frame"
-          sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  <iframe class="banner-modal-frame"></iframe>
 `;
 document.body.append(dialog);
 
