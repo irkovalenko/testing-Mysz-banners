@@ -355,18 +355,6 @@ header {
   background: white;
 }
 
-.card-label {
-  padding: 0.9rem 1rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.card-name {
-  font-size: 0.85rem;
-  color: #d6d6d6;
-}
-
 .card-size {
   font-size: 0.75rem;
   color: #6b6b6b;
@@ -1141,5 +1129,19 @@ header {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
+  }
+}
+
+@media (max-width: 470px) {
+  .nav-container {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .nav {
+    margin-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+    justify-content: center;
   }
 }

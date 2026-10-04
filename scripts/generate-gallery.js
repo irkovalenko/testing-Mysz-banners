@@ -40,7 +40,7 @@ function buildCard(fileName) {
 
   return `
   <li class="card">
-    <a class="card-link" href="${href}" target="_blank" rel="noopener">
+    <a class="card-link" href="${href}" target="_blank" rel="noopener" aria-label="${label}">
       <div class="preview-box">
         <iframe
           class="preview-frame"
@@ -51,10 +51,6 @@ function buildCard(fileName) {
           scrolling="no"
           title="${label}"
         ></iframe>
-      </div>
-      <div class="card-label">
-        <span class="card-name">${label}</span>
-        <span class="card-size">${BANNER_WIDTH}×${BANNER_HEIGHT}</span>
       </div>
     </a>
   </li>`;

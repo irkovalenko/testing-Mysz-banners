@@ -53,6 +53,6 @@ document.addEventListener("click", (e) => {
     src: link.href,
     width: preview.getAttribute("width"),
     height: preview.getAttribute("height"),
-    name: link.querySelector(".card-name").textContent,
+    name: preview.title,
   });
 });
