@@ -15,7 +15,7 @@ export const projects = [
     tone: "coral",
     kind: "banners",
     role: "Design · Animation · Rich Media",
-    nav: "pages/tabs/banners.html",
+    nav: "pages/projects/banners.html",
   },
   {
     slug: "4am",
