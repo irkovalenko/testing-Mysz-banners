@@ -8,7 +8,7 @@ export const projects = [
     summary:
       "Animated advertising banners created for online campaigns, most featuring interactive Rich Media.",
     description:
-      "I created a range of animated advertising banners for online campaigns. Most were interactive Rich Media experiences, combining motion, responsive layouts and direct viewer interaction in compact 320 × 480 formats.",
+      "I created a range of animated advertising banners for online campaigns. Most were interactive Rich Media experiences, combining motion, responsive layouts and direct viewer interaction.",
     image: "resources/images/projects_placeholders/hybrid.png",
     imageWidth: 320,
     imageHeight: 480,
