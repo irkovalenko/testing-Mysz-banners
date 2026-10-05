@@ -1,8 +1,8 @@
 // js/components/projectContent.js
-import { banners } from "./data/banners.js";
-import { createBannerGallery } from "./components/bannerGallery.js";
-import { fitPreviews } from "./fitPreviews.js";
-import "./components/bannerModal.js";
+import { banners } from "../data/banners.js";
+import { createBannerGallery } from "../components/bannerGallery.js";
+import { fitPreviews } from "../fitPreviews.js";
+import "../components/bannerModal.js";
 
 const imagesUrl = new URL("../../resources/images/work/", import.meta.url);
 

@@ -1,6 +1,6 @@
-import { projects } from "./data/projects.js";
-import { createProjectPage } from "./pages/projectPage.js";
-import { projectContent } from "./pages/projectContent/index.js";
+import { projects } from "../data/projects.js";
+import { createProjectPage } from "../pages/projectPage.js";
+import { projectContent } from "../pages/projectContent/index.js";
 
 const root = document.querySelector("#project");
 if (!root) throw new Error('Missing <div id="project"></div> in project.html');
