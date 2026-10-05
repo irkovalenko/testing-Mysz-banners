@@ -1,6 +1,6 @@
 import { loadComponent } from "./loadComponent.js";
 
-const footerUrl = new URL("../components/footer.html", import.meta.url);
+const footerUrl = new URL("../../components/footer.html", import.meta.url);
 const siteRoot = new URL("../", import.meta.url);
 
 await loadComponent("footer", footerUrl);

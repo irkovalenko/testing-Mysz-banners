@@ -1,7 +1,7 @@
 import { loadComponent } from "./loadComponent.js";
 
-const headerUrl = new URL("../components/header.html", import.meta.url);
-const siteRoot = new URL("../", import.meta.url);
+const headerUrl = new URL("../../components/header.html", import.meta.url);
+const siteRoot = new URL("../../", import.meta.url);
 
 await loadComponent("header", headerUrl);
 
