@@ -7,12 +7,15 @@ dialog.innerHTML = `
   </div>
   <iframe class="banner-modal-frame" hidden></iframe>
   <video class="banner-modal-video" controls playsinline hidden></video>
+  <img class="banner-modal-image" alt="" hidden>
+
 `;
 document.body.append(dialog);
 
 const title = dialog.querySelector(".banner-modal-title");
 const frame = dialog.querySelector(".banner-modal-frame");
 const video = dialog.querySelector(".banner-modal-video");
+const image = dialog.querySelector(".banner-modal-image");
 
 export function openMedia({
   type = "iframe",
@@ -21,21 +24,26 @@ export function openMedia({
   width,
   height,
 }) {
-  title.textContent = width && height ? `${name} · ${width}×${height}` : name;
+  frame.hidden = video.hidden = image.hidden = true;
 
-  if (type === "video") {
-    frame.hidden = true;
-    video.hidden = false;
+  if (type === "image") {
+    title.textContent = name;
+    image.alt = name;
+    image.src = src;
+    image.hidden = false;
+  } else if (type === "video") {
+    title.textContent = name;
     video.title = name;
     video.src = src;
-    video.play().catch(() => {}); // autoplay can be blocked; controls still work
+    video.hidden = false;
+    video.play().catch(() => {});
   } else {
-    video.hidden = true;
-    frame.hidden = false;
+    title.textContent = width && height ? `${name} · ${width}×${height}` : name;
     frame.title = `${name} interactive banner`;
     frame.width = width;
     frame.height = height;
     frame.src = src;
+    frame.hidden = false;
   }
 
   document.body.style.overflow = "hidden";
