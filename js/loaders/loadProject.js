@@ -1,6 +1,7 @@
 import { projects } from "../data/projects.js";
 import { createProjectPage } from "../pages/projectPage.js";
 import { projectContent } from "../pages/projectContent/index.js";
+import { openMedia } from "../components/modal.js";
 
 const root = document.querySelector("#project");
 if (!root) throw new Error('Missing <div id="project"></div> in project.html');
@@ -27,3 +28,15 @@ if (!project) {
     }
   }
 }
+
+document.addEventListener("click", (e) => {
+  const trigger = e.target.closest("[data-media-src]");
+
+  if (!trigger) return;
+
+  openMedia({
+    type: "iframe",
+    src: trigger.dataset.mediaSrc,
+    title: trigger.dataset.mediaTitle || "",
+  });
+});

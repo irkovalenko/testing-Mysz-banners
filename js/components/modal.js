@@ -17,7 +17,7 @@ const video = dialog.querySelector(".banner-modal-video");
 export function openMedia({
   type = "iframe",
   src,
-  title: name,
+  title: name = "",
   width,
   height,
 }) {

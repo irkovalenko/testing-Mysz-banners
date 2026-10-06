@@ -40,6 +40,8 @@ export const projects = [
     slug: "web",
     number: "03",
     title: "WEB",
+    subtitleJapanese: "",
+    subtitle: "",
     discipline: "UI · DIGITAL DESIGN",
     year: "2024",
     summary:

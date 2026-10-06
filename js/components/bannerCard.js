@@ -5,7 +5,13 @@ export function createBannerCard(banner) {
 
   return `
     <li class="card">
-      <a class="card-link" href="${href}" target="_blank" rel="noopener" aria-label="${banner.title}">
+      <a
+        class="card-link"
+        href="${href}"
+        data-video="${href}"
+        data-title="${banner.title}"
+        aria-label="${banner.title}"
+      >
         <div class="preview-box">
           <iframe
             class="preview-frame"
