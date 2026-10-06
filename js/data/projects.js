@@ -3,6 +3,8 @@ export const projects = [
     slug: "hybrid-adtech",
     number: "01",
     title: "HYBRID\nADTECH",
+    subtitleJapanese: "",
+    subtitle: "",
     discipline: "MOTION DESIGN · RICH MEDIA",
     year: "2025—2026",
     summary:
@@ -20,6 +22,8 @@ export const projects = [
     slug: "4am",
     number: "02",
     title: "4AM",
+    subtitleJapanese: "",
+    subtitle: "",
     discipline: "BRAND · MOTION",
     year: "2025",
     summary: "A custom WeTransfer landing page and animated identity for 4AM.",
@@ -54,6 +58,8 @@ export const projects = [
     slug: "contests",
     number: "04",
     title: "CONTESTS",
+    subtitleJapanese: "",
+    subtitle: "",
     discipline: "SHORT FILM · FESTIVALS",
     year: "2026",
     summary:
@@ -72,6 +78,8 @@ export const projects = [
     slug: "hobby",
     number: "05",
     title: "HOBBY",
+    subtitleJapanese: "日本アニメーション研究",
+    subtitle: "Studies in motion",
     discipline: "ANIME STUDIES · FAN ART",
     year: "2026",
     summary:

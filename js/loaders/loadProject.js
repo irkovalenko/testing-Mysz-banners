@@ -18,7 +18,12 @@ if (!project) {
   const slot = root.querySelector("#project-content");
 
   if (loadContent && slot) {
-    const render = await loadContent();
-    render(slot, project);
+    try {
+      const render = await loadContent();
+      render(slot, project);
+    } catch (err) {
+      console.error(`Could not load content for "${project.slug}"`, err);
+      slot.innerHTML = `<p>Content failed to load.</p>`;
+    }
   }
 }

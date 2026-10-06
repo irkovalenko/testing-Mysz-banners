@@ -12,6 +12,10 @@ export function createProjectPage(project) {
           <span>Year<br /><b>${project.year}</b></span>
         </div>
       </div>
+      <div class="project-subtitles">
+      <h3 class="project-subtitle-japanese">${project.subtitleJapanese}</h3>
+      <h2 class="project-subtitle">${project.subtitle}</h2>
+      </div>
     </section>
 
     <div class="project-content" id="project-content"></div>
