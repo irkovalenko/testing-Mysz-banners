@@ -2,7 +2,7 @@ export const projects = [
   {
     slug: "advertisement",
     number: "01",
-    title: "Advertisement",
+    title: "Ad banners",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "MOTION DESIGN · RICH MEDIA",
@@ -21,7 +21,7 @@ export const projects = [
   {
     slug: "animation",
     number: "02",
-    title: "Animation",
+    title: "Rebranding",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "BRAND · MOTION",
@@ -37,9 +37,9 @@ export const projects = [
     role: "Visual identity · Motion",
   },
   {
-    slug: "website-layout",
+    slug: "web",
     number: "03",
-    title: "Website layout",
+    title: "Web",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "UI · DIGITAL DESIGN",

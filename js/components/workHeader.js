@@ -2,7 +2,7 @@ export function workHeader() {
   return `
 <div class="work-header">
           <div>
-            <p class="work-eyebrow" lang="ja">SELECTED WORK / 04</p>
+            <p class="work-eyebrow" lang="ja">SELECTED WORK / 05</p>
             <h2 class="work-title">
               Selected<br /><span class="text-violet">work</span>
             </h2>
