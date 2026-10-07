@@ -275,6 +275,146 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 1rem;
 }
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  background: rgb(0 0 0 / 0.9);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.gallery-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-lightbox-figure {
+  max-width: min(90vw, 1200px);
+  max-height: 90vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gallery-lightbox-image {
+  display: block;
+
+  max-width: 90vw;
+  max-height: 82vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.gallery-lightbox-title {
+  color: white;
+  text-align: center;
+}
+
+.gallery-lightbox-close,
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+
+  display: grid;
+  place-items: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgb(255 255 255 / 0.15);
+  color: white;
+
+  font-size: 1.75rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.gallery-lightbox-close:hover,
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background: rgb(255 255 255 / 0.3);
+}
+
+.gallery-lightbox-close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.gallery-lightbox-prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gallery-lightbox-next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .gallery-lightbox {
+    padding: 1rem;
+  }
+
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    font-size: 1.25rem;
+  }
+
+  .gallery-lightbox-prev {
+    left: 0.5rem;
+  }
+
+  .gallery-lightbox-next {
+    right: 0.5rem;
+  }
+
+  .gallery-lightbox-close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .gallery-lightbox-image {
+    max-width: 100%;
+    max-height: 78vh;
+  }
+}
 .card {
   border-radius: 6px;
   overflow: hidden;
