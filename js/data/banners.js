@@ -9,7 +9,6 @@ export const banners = [
   { title: "LaRochePosay", file: "LaRochePosay.html" },
   { title: "LaRochePosayWoman", file: "LaRochePosayWoman.html" },
   { title: "LaRochePosay Tinder", file: "LaRochePosay_Tinder.html" },
-  { title: "LaRoche Posay weather", file: "LaRoche_Posay_weather.html" },
   { title: "Lindt Bunny", file: "Lindt_Bunny.html" },
   { title: "Lindt VDay", file: "Lindt_VDay.html" },
   { title: "Loreal", file: "Loreal.html" },

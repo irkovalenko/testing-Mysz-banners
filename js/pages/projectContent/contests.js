@@ -18,29 +18,25 @@ export function renderContest(container) {
       const src = new URL(still.file, resourcesUrl).href;
       const label = still.title ?? "";
       return `
-        <li>
-          <a href="${src}" data-image="${src}" data-title="${label}">
+      <li class="card">
+        <a class="card-link" href="${src}" data-image="${src}" data-title="${label}" aria-label="${label}">
+          <div class="preview-box">
             <img src="${src}" alt="${label}" loading="lazy">
-          </a>
-        </li>`;
+          </div>
+        </a>
+      </li>`;
     })
     .join("");
 
   container.innerHTML = `
-    <figure class="video-feature video-feature--youtube">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/${item.youtubeId}?rel=0"
-        title="${item.title}"
-        allow="encrypted-media; picture-in-picture; fullscreen"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
-    </figure>
+  <figure class="video-feature video-feature--youtube">
+    <iframe ...></iframe>
+  </figure>
 
-    <section class="work-info">
-      <div class="work-description">${description}</div>
-      ${stills ? `<ul class="still-gallery">${stills}</ul>` : ""}
-    </section>
-  `;
+  <section class="work-info">
+    <div class="work-description">${description}</div>
+    ${stills ? `<ul class="gallery gallery--landscape">${stills}</ul>` : ""}
+  </section>
+
+`;
 }

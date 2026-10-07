@@ -4,10 +4,11 @@ function createVideoCard(item, baseUrl) {
   const src = new URL(item.file, baseUrl).href;
 
   return `
-    <li class="video-card">
-      <a href="${src}" data-video="${src}" data-title="${item.title}" aria-label="Play ${item.title}">
-        <video src="${src}"autoplay loop muted playsinline preload="auto"></video>
-        <span class="video-card-title">${item.title}</span>
+    <li class="card">
+      <a class="card-link" href="${src}" data-video="${src}" data-title="${item.title}" aria-label="Play ${item.title}">
+        <div class="preview-box">
+          <video src="${src}" autoplay loop muted playsinline preload="auto"></video>
+        </div>
       </a>
     </li>
   `;
@@ -15,7 +16,7 @@ function createVideoCard(item, baseUrl) {
 
 export function createVideoGallery(list, folder = "") {
   const baseUrl = new URL(folder, resourcesUrl);
-  return `<ul class="video-gallery">${list
+  return `<ul class="gallery gallery--mixed">${list
     .map((item) => createVideoCard(item, baseUrl))
     .join("")}</ul>`;
 }

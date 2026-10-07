@@ -268,6 +268,16 @@ header {
   gap: 2rem;
 }
 
+.gallery--landscape {
+  --card-ratio: 16 / 9;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+}
+.gallery--mixed {
+  --card-ratio: 1 / 1;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+}
 .card {
   border-radius: 6px;
   overflow: hidden;
@@ -291,9 +301,21 @@ header {
 .preview-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 3; /* same poster shape as the React grid */
+  aspect-ratio: var(--card-ratio, 2 / 3);
   margin: 0;
   overflow: hidden;
+}
+
+.preview-box video,
+.preview-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-box video {
+  pointer-events: none; /* clicks go to the link */
 }
 
 .preview-frame {
@@ -304,85 +326,64 @@ header {
 }
 
 .banner-modal {
-  width: min(90vw, 720px);
-  height: min(90vh, 900px);
-  max-width: none;
-  max-height: none;
+  width: min(70vw, 470px);
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+
+  height: auto;
 
   padding: 0;
   border: 0;
   border-radius: 0.5rem;
-  overflow: hidden;
-  background: var(--background);
+  overflow: visible;
+
+  background: transparent;
 }
 
 .banner-modal::backdrop {
-  background: rgba(0, 0, 0, 0.7);
+  background: transparent;
   backdrop-filter: blur(8px);
 }
 
-.banner-modal-bar {
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-}
-
-.banner-modal-title {
-  margin: 0;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.banner-modal-close {
-  flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid rgb(255 255 255 / 0.3);
-  border-radius: 9999px;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-}
-
-.banner-modal-close:hover {
-  background: rgb(255 255 255 / 0.1);
-}
-
-.banner-modal-video {
+.banner-modal-frame,
+.banner-modal-image {
   display: block;
-  width: auto;
-  max-width: calc(100vw - 2rem);
-  max-height: calc(100vh - 6rem);
-  margin-inline: auto;
-  border-radius: 0.5rem;
-  background: #000;
-  width: 100%;
-  height: calc(100% - 3rem);
-  object-fit: contain;
+
+  width: min(75vw, 500px);
+  aspect-ratio: 2 / 3;
+  height: auto;
+
+  margin: 0 auto;
 }
 
 .banner-modal-frame {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-  /* height: calc(100% - 3rem); */
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 1px solid rgb(255 255 255 / 0.15);
-  border-radius: 0.5rem;
-  background: white;
+  border: 0;
 }
 
 .banner-modal-frame[hidden],
+.banner-modal-image[hidden],
 .banner-modal-video[hidden] {
   display: none;
+}
+
+/* video / image modal: same big box for everything */
+.banner-modal:has(.banner-modal-video:not([hidden])),
+.banner-modal:has(.banner-modal-image:not([hidden])) {
+  width: min(86vw, 1200px);
+  max-width: 86vw;
+  height: calc(100dvh - 2rem);
+}
+
+.banner-modal-video,
+.banner-modal-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: transparent; /* the blurred backdrop shows around the media */
 }
 
 .perelyn-stage {
@@ -450,47 +451,18 @@ header {
   margin-block: 1.5rem;
 }
 
+.work-info .gallery {
+  margin: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr));
+  gap: 0.75rem;
+}
+
 .work-description {
   line-height: 1.6;
   color: var(--muted-foreground);
   text-align: justify;
 }
 
-.still-gallery {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 0.5rem;
-}
-
-.still-gallery img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  cursor: zoom-in;
-}
-
-@media (max-width: 700px) {
-  .work-info {
-    grid-template-columns: 1fr;
-  }
-}
-
-.banner-modal-image {
-  display: block;
-  max-width: 100%;
-  max-height: 80vh;
-  margin: auto;
-}
-
-@media (max-width: 700px) {
-  .work-info {
-    grid-template-columns: 1fr;
-  }
-}
 .card-size {
   font-size: 0.75rem;
   color: #6b6b6b;
@@ -1041,8 +1013,13 @@ header {
 
 .project-hero {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
   border-bottom: 1px solid var(--border);
+}
+
+.project-hero > * {
+  min-width: 0;
 }
 
 .project-number {
@@ -1055,10 +1032,9 @@ header {
 
 .project-title {
   margin: 0;
-  font-size: clamp(3.2rem, 10vw, 9rem);
+  font-size: clamp(3rem, 5vw, 7rem);
   line-height: 0.8;
   white-space: pre-line;
-  overflow-wrap: anywhere;
 }
 
 .project-subtitles {
@@ -1138,50 +1114,6 @@ header {
 .project-images img {
   width: 100%;
   border-radius: 0.5rem;
-}
-
-.video-gallery {
-  --video-ratio: 3 / 4;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  gap: 1rem;
-}
-
-.video-card a {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  background: var(--ink);
-  color: white;
-  text-decoration: none;
-}
-
-.video-card video {
-  display: block;
-  width: 100%;
-  aspect-ratio: var(--video-ratio);
-  object-fit: cover;
-  pointer-events: none; /* clicks go to the link, not the video */
-  transition: transform 0.5s ease;
-}
-
-.video-card a:hover video {
-  transform: scale(1.03);
-}
-
-.video-card-title {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  padding: 2.5rem 1rem 0.75rem;
-  background: linear-gradient(to top, rgba(17, 17, 17, 0.85), transparent);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -1365,6 +1297,12 @@ header {
   }
 }
 
+@media (max-width: 700px) {
+  .work-info {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* 640-1023px: tablet layouts (covers 700-750) */
 @media (min-width: 640px) and (max-width: 1023.98px) {
   /* Profile: card on top, portrait left (tall), 
@@ -1429,7 +1367,7 @@ header {
   }
 
   .project-title {
-    font-size: clamp(3rem, 9vw, 6rem);
+    font-size: clamp(1.5rem, 7vw, 6rem);
   }
 }
 
@@ -1532,7 +1470,7 @@ header {
   }
 
   .project-hero {
-    grid-template-columns: 1.35fr 0.65fr;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
     align-items: end;
   }
 
