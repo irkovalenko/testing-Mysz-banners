@@ -11,7 +11,7 @@ export const projects = [
       "Animated advertising banners created for online campaigns, most featuring interactive Rich Media.",
     description:
       "I created a range of animated advertising banners for online campaigns. Most were interactive Rich Media experiences, combining motion, responsive layouts and direct viewer interaction.",
-    image: "resources/projects_placeholders/hybrid.png",
+    image: "resources/projects_placeholders/hybrid.jpg",
     imageWidth: 320,
     imageHeight: 480,
     tone: "coral",
@@ -29,7 +29,7 @@ export const projects = [
     summary: "A custom WeTransfer landing page and animated identity for 4AM.",
     description:
       "I designed a custom WeTransfer landing page for 4AM, starting by reimagining the company’s logo to establish a refreshed visual direction. The final design was then animated in After Effects.",
-    image: "",
+    image: "resources/projects_placeholders/4am.jpg",
     imageWidth: 1650,
     imageHeight: 768,
     tone: "blue",
@@ -48,7 +48,7 @@ export const projects = [
       "Interface and visual-system explorations for technology-led digital products.",
     description:
       "Selected interface work balancing clear information architecture, modular design systems and expressive visual details across responsive websites.",
-    image: "",
+    image: "resources/projects_placeholders/webLayout.jpg",
     imageWidth: 1280,
     imageHeight: 1800,
     tone: "lilac",
@@ -68,7 +68,7 @@ export const projects = [
       "Independent moving-image work developed for festival and competition submissions.",
     description:
       "A film project presented through FilmFreeway, bringing together visual storytelling, animation and independently produced moving image.",
-    image: "",
+    image: "resources/projects_placeholders/contest.jpg",
     imageWidth: 1650,
     imageHeight: 768,
     tone: "ink",
@@ -88,7 +88,7 @@ export const projects = [
       "Personal animation studies inspired by Japanese animation and fan art.",
     description:
       "Inspired by Japanese animation, I analyze and reconstruct anime scenes or draw fan art and make it move. These studies are a space to understand timing, composition and character performance through practice.",
-    image: "",
+    image: "resources/projects_placeholders/hobby.jpg",
     imageWidth: 1024,
     imageHeight: 1536,
     tone: "lime",
