@@ -30,13 +30,19 @@ export function renderContest(container) {
 
   container.innerHTML = `
   <figure class="video-feature video-feature--youtube">
-    <iframe ...></iframe>
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/${item.youtubeId}?rel=0"
+      title="${item.title}"
+      allow="encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
   </figure>
 
   <section class="work-info">
     <div class="work-description">${description}</div>
     ${stills ? `<ul class="gallery gallery--landscape">${stills}</ul>` : ""}
   </section>
-
 `;
 }
