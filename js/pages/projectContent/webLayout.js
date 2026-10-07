@@ -2,7 +2,7 @@ export function renderPerelyn(slot) {
   slot.innerHTML = `
     <div class="perelyn-stage">
   <img
-    src="../../../../resources/projects/web_layout/perelyn.png"
+    src="../../../resources/projects/web_layout/perelyn.png"
     alt="Perelyn website homepage"
     class="perelyn-image"
   />
