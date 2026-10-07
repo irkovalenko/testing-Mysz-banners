@@ -1,8 +1,8 @@
 export const projects = [
   {
-    slug: "hybrid-adtech",
+    slug: "advertisement",
     number: "01",
-    title: "HYBRID\nADTECH",
+    title: "Advertisement",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "MOTION DESIGN · RICH MEDIA",
@@ -19,9 +19,9 @@ export const projects = [
     role: "Design · Animation · Rich Media",
   },
   {
-    slug: "4am",
+    slug: "animation",
     number: "02",
-    title: "4AM",
+    title: "Animation",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "BRAND · MOTION",
@@ -37,9 +37,9 @@ export const projects = [
     role: "Visual identity · Motion",
   },
   {
-    slug: "web",
+    slug: "website-layout",
     number: "03",
-    title: "WEB",
+    title: "Website layout",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "UI · DIGITAL DESIGN",
@@ -59,7 +59,7 @@ export const projects = [
   {
     slug: "contests",
     number: "04",
-    title: "CONTESTS",
+    title: "Contests",
     subtitleJapanese: "",
     subtitle: "",
     discipline: "SHORT FILM · FESTIVALS",
@@ -79,7 +79,7 @@ export const projects = [
   {
     slug: "hobby",
     number: "05",
-    title: "HOBBY",
+    title: "Hobby",
     subtitleJapanese: "日本アニメーション研究",
     subtitle: "Studies in motion",
     discipline: "ANIME STUDIES · FAN ART",

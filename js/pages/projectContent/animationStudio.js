@@ -1,12 +1,12 @@
-import { four_am } from "../../data/four_am.js";
+import { animation } from "../../data/animation_studio.js";
 
 const resourcesUrl = new URL(
-  "../../../resources/projects/4am/",
+  "../../../resources/projects/animation_studio/",
   import.meta.url,
 );
 
 export function renderFourAm(container) {
-  const [item] = four_am;
+  const [item] = animation;
   const src = new URL(item.file, resourcesUrl).href;
 
   container.innerHTML = `

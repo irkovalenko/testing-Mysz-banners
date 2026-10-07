@@ -2,7 +2,7 @@ import { mouse_shrine } from "../../data/mouse_shrine.js";
 import "../../components/videoModal.js";
 
 const resourcesUrl = new URL(
-  "../../../resources/projects/mouse_shrine/",
+  "../../../resources/projects/contests/",
   import.meta.url,
 );
 

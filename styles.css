@@ -66,37 +66,6 @@ body {
   color: var(--ink);
 }
 
-main {
-  position: relative;
-  overflow: hidden;
-}
-
-main::before {
-  content: "モーションデザイン";
-
-  position: absolute;
-  top: 8rem;
-  right: -1rem;
-
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-
-  font-size: clamp(6rem, 22vw, 28rem);
-  line-height: 1;
-
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(17, 17, 17, 0.14);
-
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-main > * {
-  position: relative;
-  z-index: 1;
-}
-
 /* shared: display-font, uppercase headings */
 h1,
 h2,
@@ -104,6 +73,7 @@ h3,
 .footer-title,
 .marquee-track {
   font-family: var(--font-display);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -255,19 +225,8 @@ header {
 
 .hero .relative-block {
   position: relative;
-}
-
-.hero .title-japanese {
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-
-  margin: 0;
-  font-size: 0.875rem;
-  line-height: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .hero h1 {
@@ -284,6 +243,11 @@ header {
 
 .hero h1 .line {
   color: var(--ink);
+}
+
+.hero h1 .line-centered {
+  color: var(--muted-foreground);
+  margin-left: 3rem;
 }
 
 .hero h1 .line--pink {
@@ -833,7 +797,7 @@ header {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%); /* move left by half its own width */
+    transform: translateX(-25%);
   }
 }
 
