@@ -195,12 +195,21 @@ header {
   color: var(--muted-foreground);
 }
 
-.hero .title-and-contract {
-  margin: 3rem 0 2rem;
+.hero .hero-top-line {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 1rem;
+  align-items: center;
+  column-gap: clamp(0.7rem, 3vw, 1.5rem);
+}
+
+.hero .role,
+.hero .meta,
+.hero .contract-line {
+  font-size: clamp(0.55rem, 1vw, 1rem);
+}
+
+.hero .title-and-contract {
+  margin: 3rem 0 2rem;
 }
 
 .hero .title-and-contract p {
@@ -208,19 +217,28 @@ header {
   line-height: 1.3;
 }
 
-.hero .title-and-contract .meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
+.hero .role {
+  white-space: nowrap;
 }
 
-.hero .title-and-contract .meta-dot {
+.hero .meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.hero .meta-dot {
   display: block;
   width: 0.5rem;
   height: 0.5rem;
+  flex-shrink: 0;
   border-radius: 9999px;
   background: var(--lime);
+}
+
+.hero .contract-line {
+  margin-top: 0.25rem !important;
 }
 
 .hero .relative-block {
@@ -250,6 +268,15 @@ header {
 .hero h1 .line--pink {
   margin-left: 0;
   color: var(--pink);
+}
+
+@media (max-width: 639px) {
+  .hero h1 .line--pink {
+    position: relative;
+    left: var(--hero-static-offset, 0px);
+    font-size: 1.1em;
+    font-weight: 900;
+  }
 }
 
 /* ==========================================================================
@@ -1197,6 +1224,14 @@ body.lightbox-open {
 }
 
 .work-card-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: transform 0.2s ease;
   align-self: flex-end;
 }
