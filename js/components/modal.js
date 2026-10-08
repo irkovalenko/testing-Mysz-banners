@@ -2,15 +2,41 @@ const dialog = document.createElement("dialog");
 dialog.className = "banner-modal";
 dialog.innerHTML = `
   <iframe class="banner-modal-frame" hidden></iframe>
-  <video class="banner-modal-video" controls playsinline hidden></video>
-  <img class="banner-modal-image" alt="" hidden>
 
+  <video class="banner-modal-video" playsinline hidden></video>
+
+  <button
+    class="banner-modal-mute"
+    type="button"
+    aria-label="Unmute video"
+    aria-pressed="true"
+    hidden
+  >
+    🔇
+  </button>
+
+  <img class="banner-modal-image" alt="" hidden>
 `;
 document.body.append(dialog);
 
 const frame = dialog.querySelector(".banner-modal-frame");
 const video = dialog.querySelector(".banner-modal-video");
 const image = dialog.querySelector(".banner-modal-image");
+const muteButton = dialog.querySelector(".banner-modal-mute");
+
+muteButton.addEventListener("click", () => {
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    muteButton.textContent = "🔇";
+    muteButton.setAttribute("aria-label", "Unmute video");
+    muteButton.setAttribute("aria-pressed", "true");
+  } else {
+    muteButton.textContent = "🔊";
+    muteButton.setAttribute("aria-label", "Mute video");
+    muteButton.setAttribute("aria-pressed", "false");
+  }
+});
 
 export function openMedia({
   type = "iframe",
@@ -18,8 +44,10 @@ export function openMedia({
   title: name = "",
   width,
   height,
+  showreel = false,
 }) {
   frame.hidden = video.hidden = image.hidden = true;
+  muteButton.hidden = true;
 
   if (type === "image") {
     image.alt = name;
@@ -29,6 +57,16 @@ export function openMedia({
     video.title = name;
     video.src = src;
     video.hidden = false;
+
+    if (showreel) {
+      muteButton.hidden = false;
+      video.muted = true;
+
+      muteButton.textContent = "🔇";
+      muteButton.setAttribute("aria-label", "Unmute video");
+      muteButton.setAttribute("aria-pressed", "true");
+    }
+
     video.play().catch(() => {});
   } else {
     frame.title = `${name} interactive banner`;
@@ -50,7 +88,12 @@ dialog.addEventListener("click", (e) => {
 dialog.addEventListener("close", () => {
   frame.src = "about:blank"; // stops the banner playing
   video.pause();
+  video.muted = true;
   video.removeAttribute("src");
+  muteButton.hidden = true;
+  muteButton.textContent = "🔇";
+  muteButton.setAttribute("aria-label", "Unmute video");
+  muteButton.setAttribute("aria-pressed", "true");
   video.load(); // releases the file
   document.body.style.overflow = "";
 });

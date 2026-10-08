@@ -10,6 +10,7 @@ document.addEventListener("click", (e) => {
       type: "video",
       src: videoTrigger.dataset.video,
       title: videoTrigger.dataset.title ?? "",
+      showreel: videoTrigger.hasAttribute("data-showreel"),
     });
     return;
   }

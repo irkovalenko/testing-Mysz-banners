@@ -1,18 +1,30 @@
 <div class="profile-grid">
-  <article class="profile-card raster-dots">
-    <div class="profile-card-header">
-      <span class="profile-card-label">Profile / 01</span>
-      <span class="profile-card-icon">✦</span>
+  <button
+    class="showreel-button"
+    type="button"
+    aria-label="Open showreel"
+    data-video="resources/showreel.mp4"
+    data-title="Showreel"
+    data-showreel
+  >
+    <video
+      class="showreel-preview"
+      src="resources/showreel.mp4"
+      poster="resources/showreel_poster.png"
+      muted
+      loop
+      autoplay
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+    ></video>
+    <div class="showreel-button-inner">
+      <div class="showreel-header">
+        <span>Showreel / 01</span>
+        <span>▶</span>
+      </div>
     </div>
-
-    <div class="profile-card-content">
-      <h2>Making ideas<br />move.</h2>
-      <p>
-        I craft emotionally resonant design and animation across advertising,
-        technology, film and visual identity.
-      </p>
-    </div>
-  </article>
+  </button>
 
   <article class="portrait-card">
     <a href="index.html#about" data-section="about">
@@ -35,19 +47,18 @@
 
     <div id="toolbox-grid" class="toolbox-grid"></div>
   </article>
-
-  <button class="showreel-button" type="button" aria-label="Open showreel">
-    <div class="showreel-button-inner">
-      <div class="showreel-header">
-        <span>Showreel / 03</span>
-        <span>▶</span>
-      </div>
-
-      <div class="showreel-bars" aria-hidden="true">
-        <span style="height: 34%"></span>
-        <span style="height: 58%"></span>
-        <span style="height: 44%"></span>
-      </div>
+  <article class="profile-card raster-dots">
+    <div class="profile-card-header">
+      <span class="profile-card-label">Profile / 03</span>
+      <span class="profile-card-icon">✦</span>
     </div>
-  </button>
+
+    <div class="profile-card-content">
+      <h2>Making ideas<br />move.</h2>
+      <p>
+        I craft emotionally resonant design and animation across advertising,
+        technology, film and visual identity.
+      </p>
+    </div>
+  </article>
 </div>

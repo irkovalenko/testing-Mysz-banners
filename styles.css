@@ -607,6 +607,42 @@ body.lightbox-open {
   background: transparent;
 }
 
+.banner-modal-mute {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 10;
+
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgb(255 255 255 / 0.15);
+  color: white;
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.banner-modal-mute:hover {
+  background: rgb(255 255 255 / 0.3);
+}
+
+.banner-modal-mute[hidden] {
+  display: none;
+}
+
 .banner-modal::backdrop {
   background: transparent;
   backdrop-filter: blur(8px);
@@ -996,10 +1032,11 @@ body.lightbox-open {
   display: block;
 }
 
+/* showreel card */
 .showreel-button {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch; /* CHANGED: was flex-start, lets the content fill tall cards */
   width: 100%;
   overflow: hidden;
   border: 0;
@@ -1015,6 +1052,8 @@ body.lightbox-open {
   position: relative;
   z-index: 1;
   width: 100%;
+  display: flex; /* CHANGED: column layout so the bars can grow */
+  flex-direction: column;
 }
 
 .showreel-header {
@@ -1023,24 +1062,18 @@ body.lightbox-open {
   justify-content: space-between;
 }
 
-.showreel-bars {
-  margin-top: 1.75rem;
-  display: flex;
-  align-items: end;
-  gap: 0.25rem;
-  height: 4rem;
-}
-
-.showreel-bars span {
-  display: block;
+.showreel-preview {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  border-radius: 9999px;
-  background-color: var(--pink);
-  transition: transform 0.2s ease;
+  height: 100%;
+  object-fit: fit;
+  pointer-events: none; /* clicks go to the button, so the modal opens */
+  transition: opacity 0.3s ease;
 }
 
-.showreel-button:hover .showreel-bars span {
-  transform: scaleY(0.75);
+.showreel-button:hover .showreel-preview {
+  opacity: 0.85;
 }
 
 /* ==========================================================================
@@ -1540,6 +1573,13 @@ body.lightbox-open {
   }
 }
 
+/* <= 639px: mobile stacking, showreel first (ADDED) */
+@media (max-width: 639px) {
+  .showreel-button {
+    order: -1;
+  }
+}
+
 /* <= 480px */
 @media (max-width: 480px) {
   .toolbox-grid {
@@ -1609,19 +1649,17 @@ body.lightbox-open {
 
 /* 640-1023px: tablet layouts (covers 700-750) */
 @media (min-width: 640px) and (max-width: 1023.98px) {
-  /* Profile: card on top, portrait left (tall), 
-  box + showreel stacked right */
+  /* Profile grid (SWAPPED): showreel on top (full width), portrait left (tall),
+     toolbox + profile card stacked right */
   .profile-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
   }
 
-  .profile-card {
+  .showreel-button {
     grid-column: 1 / -1;
-  }
-
-  .profile-card-content {
-    margin-top: 3rem;
+    grid-row: 1;
+    min-height: 10rem;
   }
 
   .portrait-card {
@@ -1635,10 +1673,21 @@ body.lightbox-open {
     grid-row: 2;
   }
 
-  .showreel-button {
+  .profile-card {
     grid-column: 2;
     grid-row: 3;
     min-height: 10rem;
+    padding: 1rem;
+  }
+
+  .profile-card-content {
+    margin-top: 1.5rem;
+  }
+
+  .profile-card p {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   /* Work: lead card spans the full row, the rest pair up */
@@ -1690,18 +1739,41 @@ body.lightbox-open {
     grid-template-rows: 12rem 12rem;
   }
 
-  .profile-card {
+  /* SWAPPED: showreel takes the tall slot in column 1 */
+  .showreel-button {
     grid-column: 1;
     grid-row: 1 / span 2;
+    min-height: 0;
   }
 
-  .profile-card-content {
-    margin-top: 6rem;
+  /* let the bars grow to fill the tall card */
+  .showreel-bars {
+    flex: 1;
+    height: auto;
+    min-height: 4rem;
   }
 
   .portrait-card {
     grid-column: 2;
     grid-row: 1 / span 2;
+  }
+
+  /* SWAPPED: profile card takes the short slot in column 3, row 2 */
+  .profile-card {
+    grid-column: 3;
+    grid-row: 2;
+    min-height: 12rem;
+    padding: 1rem;
+  }
+
+  .profile-card-content {
+    margin-top: 1.5rem;
+  }
+
+  .profile-card p {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   /* toolbox: let the 2 rows share the card's remaining height */
@@ -1729,12 +1801,6 @@ body.lightbox-open {
     inset: 0.375rem;
     width: calc(100% - 0.75rem);
     height: calc(100% - 0.75rem);
-  }
-
-  .showreel-button {
-    grid-column: 3;
-    grid-row: 2;
-    min-height: 12rem;
   }
 
   .about-inner {
