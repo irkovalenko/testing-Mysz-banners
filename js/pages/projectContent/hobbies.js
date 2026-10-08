@@ -33,13 +33,6 @@ export function renderHobbies(container) {
            video: studyUrl("rukia.mp4"),
            title: "Study 02",
          })}
-         ${createMediaStage({
-           ratio: "landscape",
-           label: "1920 × 1080 study / 03",
-           video: studyUrl("missti.mp4"),
-           title: "Study 03",
-           wide: true,
-         })}
         
       </div>
     </section>

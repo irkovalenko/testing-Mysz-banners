@@ -10,30 +10,30 @@ export function createLightBoxGallery() {
         ×
       </button>
 
-      <button
-        class="gallery-lightbox-prev"
-        type="button"
-        aria-label="Previous image"
-      >
-        ←
-      </button>
-
       <figure class="gallery-lightbox-figure">
-        <img
-          class="gallery-lightbox-image"
-          src=""
-          alt=""
-        />
+        <div class="gallery-lightbox-stage">
+          <button
+            class="gallery-lightbox-prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ←
+          </button>
+          <img
+            class="gallery-lightbox-image"
+            src=""
+            alt=""
+          />
+          <button
+            class="gallery-lightbox-next"
+            type="button"
+            aria-label="Next image"
+          >
+            →
+          </button>
+        </div>
         <figcaption class="gallery-lightbox-title"></figcaption>
       </figure>
-
-      <button
-        class="gallery-lightbox-next"
-        type="button"
-        aria-label="Next image"
-      >
-        →
-      </button>
 
     </div>
   `;
