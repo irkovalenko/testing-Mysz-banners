@@ -14,7 +14,9 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  const imageTrigger = e.target.closest("[data-image]");
+  const imageTrigger = e.target.closest(
+    "[data-image]:not(.image-modal-trigger)",
+  );
   if (imageTrigger) {
     e.preventDefault();
     openMedia({
