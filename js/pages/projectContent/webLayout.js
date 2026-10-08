@@ -15,6 +15,18 @@ export function renderPerelyn(slot) {
       >
         Visit website
       </a>
+       </div>
+   <div class="perelyn-stage">
+      <img
+        src="/testing-Mysz-banners/resources/projects/web_layout/image_1.jpg"
+        class="perelyn-image"
+      />
+ </div>
+  <div class="perelyn-stage">
+      <img
+        src="/testing-Mysz-banners/resources/projects/web_layout/image_2.jpg"
+        class="perelyn-image"
+      />
     </div>
   `;
 }
