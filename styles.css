@@ -53,7 +53,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-h, 5.5rem); /* fallback until JS measures */
 }
 
 section[id] {

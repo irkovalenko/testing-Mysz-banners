@@ -59,11 +59,55 @@ if (document.body.dataset.section) {
 }
 
 const navContainer = document.querySelector("#header .nav-container");
+const headerH = () => navContainer?.offsetHeight ?? 0;
+
 if (navContainer) {
   new ResizeObserver(() => {
-    document.documentElement.style.setProperty(
-      "--header-h",
-      navContainer.offsetHeight + "px",
-    );
+    document.documentElement.style.setProperty("--header-h", headerH() + "px");
   }).observe(navContainer);
+}
+
+function scrollToId(id, behavior = "instant") {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerH();
+  window.scrollTo({ top, behavior });
+  return true;
+}
+
+if (onHomePage) {
+  // 1) Arriving from another page with #hash: align, and keep re-aligning
+  //    while images/JS content change the layout
+  if (location.hash) {
+    history.scrollRestoration = "manual";
+    const id = decodeURIComponent(location.hash.slice(1));
+    const align = () => scrollToId(id);
+
+    align();
+    addEventListener("load", align);
+
+    const ro = new ResizeObserver(align);
+    ro.observe(document.body);
+    const stop = () => ro.disconnect();
+    setTimeout(stop, 3000);
+    ["wheel", "touchstart", "keydown"].forEach((evt) =>
+      addEventListener(evt, stop, { once: true, passive: true }),
+    );
+  }
+
+  // 2) Clicking nav links while already on the home page: scroll, don't reload
+  links.forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const url = new URL(a.href);
+      if (normalize(url.pathname) !== normalize(location.pathname)) return;
+      e.preventDefault();
+      if (url.hash) {
+        scrollToId(decodeURIComponent(url.hash.slice(1)), "smooth");
+        history.pushState(null, "", url.hash);
+      } else {
+        scrollTo({ top: 0, behavior: "smooth" });
+        history.pushState(null, "", location.pathname);
+      }
+    });
+  });
 }
