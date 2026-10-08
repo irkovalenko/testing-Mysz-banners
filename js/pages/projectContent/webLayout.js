@@ -1,5 +1,5 @@
-import { createLightBoxGallery } from "/testing-Mysz-banners/components/galleryLightBox.js";
-import { initImageModal } from "/testing-Mysz-banners/components/imageModal.js";
+import { createLightBoxGallery } from "../../components/galleryLightBox.js";
+import { initImageModal } from "../../components/imageModal.js";
 
 export function renderPerelyn(slot) {
   slot.innerHTML = `
