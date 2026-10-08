@@ -57,3 +57,13 @@ if (document.body.dataset.section) {
   new ResizeObserver(update).observe(document.body);
   update();
 }
+
+const navContainer = document.querySelector("#header .nav-container");
+if (navContainer) {
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty(
+      "--header-h",
+      navContainer.offsetHeight + "px",
+    );
+  }).observe(navContainer);
+}

@@ -56,6 +56,10 @@ html {
   scroll-padding-top: var(--nav-h, 5.5rem); /* fallback until JS measures */
 }
 
+section[id] {
+  scroll-margin-top: var(--header-h, 80px);
+}
+
 body {
   background-color: var(--background);
   min-height: 100vh;
