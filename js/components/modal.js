@@ -2,24 +2,26 @@ const dialog = document.createElement("dialog");
 dialog.className = "banner-modal";
 dialog.innerHTML = `
   <iframe class="banner-modal-frame" hidden></iframe>
+<div class="banner-modal-video-wrap" hidden>
+    <video class="banner-modal-video" playsinline></video>
+    <button
+      class="banner-modal-mute"
+      type="button"
+      aria-label="Unmute video"
+      aria-pressed="true"
+      hidden
+    >
+      🔇
+    </button>
+  </div>
 
-  <video class="banner-modal-video" playsinline hidden></video>
-
-  <button
-    class="banner-modal-mute"
-    type="button"
-    aria-label="Unmute video"
-    aria-pressed="true"
-    hidden
-  >
-    🔇
-  </button>
 
   <img class="banner-modal-image" alt="" hidden>
 `;
 document.body.append(dialog);
 
 const frame = dialog.querySelector(".banner-modal-frame");
+const videoWrap = dialog.querySelector(".banner-modal-video-wrap");
 const video = dialog.querySelector(".banner-modal-video");
 const image = dialog.querySelector(".banner-modal-image");
 const muteButton = dialog.querySelector(".banner-modal-mute");
@@ -46,7 +48,7 @@ export function openMedia({
   height,
   showreel = false,
 }) {
-  frame.hidden = video.hidden = image.hidden = true;
+  frame.hidden = videoWrap.hidden = image.hidden = true;
   muteButton.hidden = true;
 
   if (type === "image") {
@@ -56,7 +58,7 @@ export function openMedia({
   } else if (type === "video") {
     video.title = name;
     video.src = src;
-    video.hidden = false;
+    videoWrap.hidden = false;
 
     if (showreel) {
       muteButton.hidden = false;

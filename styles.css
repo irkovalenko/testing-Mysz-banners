@@ -595,6 +595,9 @@ body.lightbox-open {
   transform-origin: top left;
 }
 
+/* Replace everything from `.banner-modal {` down to and including
+   `.banner-modal-frame[hidden], ... { display: none; }` with this block. */
+
 .banner-modal {
   width: min(70vw, 470px);
   max-width: calc(100vw - 2rem);
@@ -610,10 +613,74 @@ body.lightbox-open {
   background: transparent;
 }
 
+.banner-modal::backdrop {
+  background: transparent;
+  backdrop-filter: blur(8px);
+}
+
+/* banner (iframe): 2:3 box that always fits the viewport height */
+.banner-modal:has(.banner-modal-frame:not([hidden])) {
+  width: min(70vw, 500px, calc((100dvh - 4rem) * 2 / 3));
+  height: auto;
+}
+
+.banner-modal-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  height: auto;
+  margin: 0;
+  border: 0;
+}
+
+/* video / image: one large box with breathing room */
+.banner-modal:has(.banner-modal-video-wrap:not([hidden])),
+.banner-modal:has(.banner-modal-image:not([hidden])) {
+  width: min(86vw, 1200px);
+  max-width: 86vw;
+  height: calc(100dvh - 8rem);
+}
+
+/* center the shrink-wrapped video inside the dialog */
+.banner-modal[open]:has(.banner-modal-video-wrap:not([hidden])) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* wrapper hugs the rendered video, so the button anchors to the video itself */
+.banner-modal-video-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.banner-modal-video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(86vw, 1200px);
+  max-height: calc(100dvh - 8rem);
+  margin: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+}
+
+.banner-modal-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: transparent;
+}
+
+/* mute button: anchored to the video's own top-right corner */
 .banner-modal-mute {
   position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 10;
 
   width: 3rem;
@@ -646,43 +713,10 @@ body.lightbox-open {
   display: none;
 }
 
-.banner-modal::backdrop {
-  background: transparent;
-  backdrop-filter: blur(8px);
-}
-
-/* banner (iframe): 2:3 box that always fits the viewport height */
-.banner-modal:has(.banner-modal-frame:not([hidden])) {
-  width: min(70vw, 500px, calc((100dvh - 4rem) * 2 / 3));
-  height: auto;
-}
-
-.banner-modal-frame {
-  display: block;
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  height: auto;
-  margin: 0;
-  border: 0;
-}
-
-/* video / image: one large box with breathing room */
-.banner-modal:has(.banner-modal-video:not([hidden])),
-.banner-modal:has(.banner-modal-image:not([hidden])) {
-  width: min(86vw, 1200px);
-  max-width: 86vw;
-  height: calc(100dvh - 8rem);
-}
-
-.banner-modal-video,
-.banner-modal-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  object-fit: contain;
-  border-radius: 0.5rem;
-  background: transparent;
+.banner-modal-frame[hidden],
+.banner-modal-image[hidden],
+.banner-modal-video-wrap[hidden] {
+  display: none;
 }
 
 .banner-modal-frame[hidden],
