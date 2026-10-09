@@ -248,7 +248,6 @@ header {
   position: relative;
   display: flex;
   justify-content: center;
-  letter-spacing: 1rem;
 }
 
 .hero h1 {
@@ -256,7 +255,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: clamp(2.5rem, 8vw, 9rem);
+  font-size: clamp(2.85rem, 9.1vw, 10.25rem);
   line-height: 0.9;
 }
 
@@ -274,13 +273,10 @@ header {
   color: var(--pink);
 }
 
-@media (max-width: 400px) {
-  .hero .relative-block {
-    letter-spacing: normal;
-  }
-}
-
 @media (max-width: 639px) {
+  .hero .relative-block {
+    transform: translateX(-2rem);
+  }
   .hero h1 .line--pink {
     position: relative;
     left: var(--hero-static-offset, 0px);
