@@ -672,12 +672,12 @@ body.lightbox-open {
 /* mute button: anchored to the video's own top-right corner */
 .banner-modal-mute {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 10;
 
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
 
   display: flex;
@@ -685,21 +685,41 @@ body.lightbox-open {
   justify-content: center;
 
   border: 0;
-  border-radius: 50%;
+  border-radius: 0.25rem;
 
-  background: rgb(255 255 255 / 0.15);
+  background: rgb(15 15 15 / 0.72);
   color: white;
-
-  font-size: 1.1rem;
-  line-height: 1;
 
   cursor: pointer;
 
-  transition: background 0.2s ease;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .banner-modal-mute:hover {
-  background: rgb(255 255 255 / 0.3);
+  background: rgb(15 15 15 / 0.95);
+  transform: scale(1.05);
+}
+
+.banner-modal-mute:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.banner-modal-mute-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: currentColor;
+  display: none;
+}
+
+.banner-modal-mute[aria-pressed="true"] .banner-modal-mute-icon--muted {
+  display: block;
+}
+
+.banner-modal-mute[aria-pressed="false"] .banner-modal-mute-icon--unmuted {
+  display: block;
 }
 
 .banner-modal-mute[hidden] {
