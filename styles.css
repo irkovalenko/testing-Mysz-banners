@@ -248,6 +248,7 @@ header {
   position: relative;
   display: flex;
   justify-content: center;
+  letter-spacing: 1rem;
 }
 
 .hero h1 {
@@ -271,6 +272,12 @@ header {
 .hero h1 .line--pink {
   margin-left: 0;
   color: var(--pink);
+}
+
+@media (max-width: 400px) {
+  .hero .relative-block {
+    letter-spacing: normal;
+  }
 }
 
 @media (max-width: 639px) {
@@ -1551,6 +1558,14 @@ body.lightbox-open {
   font-size: 0.75rem;
   line-height: 1.6;
   color: var(--muted-foreground);
+}
+
+/* The email control is now a <button>, so reset the button defaults.
+   Everything else comes from your existing .footer-link rules. */
+button.footer-link {
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
 }
 
 .footer-link {
