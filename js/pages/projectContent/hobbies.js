@@ -16,22 +16,16 @@ export function renderHobbies(container) {
       <div class="stage-grid">
         ${createMediaStage({
           ratio: "landscape",
-          label: "1920 × 1080 study / 03",
           video: studyUrl("blue-box.mp4"),
-          title: "Study 03",
           wide: true,
         })}
         ${createMediaStage({
           ratio: "portrait",
-          label: "1080 × 1920 study / 02",
           video: studyUrl("ichigo.mp4"),
-          title: "Study 02",
         })}
          ${createMediaStage({
            ratio: "portrait",
-           label: "1080 × 1920 study / 02",
            video: studyUrl("rukia.mp4"),
-           title: "Study 02",
          })}
         
       </div>

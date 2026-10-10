@@ -4,7 +4,6 @@
   --background: oklch(0.965 0.008 90);
   --foreground: oklch(0.18 0.015 270);
   --card: oklch(0.99 0.004 90);
-  --card-foreground: oklch(0.18 0.015 270);
   --muted: oklch(0.91 0.01 90);
   --muted-foreground: oklch(0.47 0.02 270);
   --border: oklch(0.78 0.015 270);
@@ -18,7 +17,9 @@
 }
 
 /* ==========================================================================
+
    Base
+
    ========================================================================== */
 
 * {
@@ -35,26 +36,32 @@ section[id] {
 
 body {
   background-color: var(--background);
+
   min-height: 100vh;
+
   margin: 0;
+
   padding: var(--page-pad);
+
   padding-top: var(--nav-h, 5.5rem);
+
   font-family: var(--font-display);
+
   color: var(--ink);
 }
 
-/* shared: display-font, uppercase headings */
 h1,
 h2,
 h3,
 .footer-title,
 .marquee-track {
   font-family: var(--font-display);
+
   font-weight: 700;
+
   text-transform: uppercase;
 }
 
-/* shared: bold uppercase labels */
 .hero,
 .nav,
 .about .eyebrow,
@@ -69,10 +76,10 @@ h3,
 .showreel-header,
 .tool-tip {
   font-weight: 700;
+
   text-transform: uppercase;
 }
 
-/* shared: label sizes */
 .hero,
 .nav,
 .about .eyebrow,
@@ -100,7 +107,9 @@ h3,
 }
 
 /* ==========================================================================
+
    Header
+
    ========================================================================== */
 
 header {
@@ -109,46 +118,71 @@ header {
 
 .nav-container {
   position: fixed;
+
   top: 0;
+
   left: 0;
+
   width: 100%;
+
   display: grid;
+
   grid-template-columns: minmax(0, 1fr) auto;
+
   align-items: start;
+
   gap: 1rem;
+
   padding: 1rem var(--page-pad);
+
   border-bottom: 1px solid var(--border);
+
   background-color: var(--background);
+
   z-index: 1000;
 }
 
 .header-title {
   display: flex;
+
   flex-direction: column;
 }
 
 .header-title h1 {
   font-size: 0.875rem;
+
   line-height: 1;
+
   color: var(--ink);
 }
 
 .nav {
   margin-left: auto;
+
   margin-bottom: 1rem;
+
   display: flex;
+
   align-items: center;
+
   gap: 0.25rem;
+
   border: 1px solid var(--border);
+
   border-radius: 9999px;
+
   background-color: var(--card);
+
   padding: 0.25rem;
 }
 
 .nav a {
   border-radius: 9999px;
+
   padding: 0.5rem 1.25rem;
+
   color: var(--ink);
+
   text-decoration: none;
 }
 
@@ -162,20 +196,28 @@ header {
 }
 
 /* ==========================================================================
+
    Hero
+
    ========================================================================== */
 
 .hero {
   display: flex;
+
   flex-direction: column;
+
   margin-bottom: 3rem;
+
   color: var(--muted-foreground);
 }
 
 .hero .hero-top-line {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr) auto;
+
   align-items: center;
+
   column-gap: clamp(0.7rem, 3vw, 1.5rem);
 }
 
@@ -191,6 +233,7 @@ header {
 
 .hero .title-and-contract p {
   margin: 0;
+
   line-height: 1.3;
 }
 
@@ -200,17 +243,25 @@ header {
 
 .hero .meta {
   display: inline-flex;
+
   align-items: center;
+
   gap: 0.5rem;
+
   white-space: nowrap;
 }
 
 .hero .meta-dot {
   display: block;
+
   width: 0.5rem;
+
   height: 0.5rem;
+
   flex-shrink: 0;
+
   border-radius: 9999px;
+
   background: var(--lime);
 }
 
@@ -220,21 +271,29 @@ header {
 
 .hero .relative-block {
   position: relative;
+
   display: flex;
+
   justify-content: center;
 }
 
 .hero h1 {
   margin: 0;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   font-size: clamp(2.85rem, 9.1vw, 10.25rem);
+
   line-height: 0.9;
 }
 
 .hero h1 .line--pink {
   display: block;
+
   white-space: nowrap;
 }
 
@@ -244,40 +303,61 @@ header {
 
 .hero h1 .line--pink {
   margin-left: 0;
+
   color: var(--pink);
 }
 
 /* ==========================================================================
+
    Banner gallery
+
    ========================================================================== */
 
 .gallery {
   list-style: none;
+
   padding: 0;
+
   margin: 4rem 0 3rem;
+
   display: grid;
+
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+
   gap: 2rem;
 }
 
 .gallery--landscape {
   --card-ratio: 16 / 9;
+
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+
   gap: 1rem;
 }
+
 .gallery--mixed {
   --card-ratio: 1 / 1;
+
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+
   gap: 1rem;
 }
+
+/* --------------------------------------------------------------------------
+   Gallery lightbox
+   -------------------------------------------------------------------------- */
 
 .gallery-lightbox {
   position: fixed;
+
   inset: 0;
+
   z-index: 2000;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   padding: 2rem;
@@ -285,7 +365,9 @@ header {
   background: rgb(0 0 0 / 0.9);
 
   opacity: 0;
+
   visibility: hidden;
+
   pointer-events: none;
 
   transition:
@@ -295,47 +377,61 @@ header {
 
 .gallery-lightbox.is-open {
   opacity: 1;
+
   visibility: visible;
+
   pointer-events: auto;
 }
 
 .gallery-lightbox-figure {
   position: relative;
+
   z-index: 1;
+
   max-width: min(90vw, calc(1200px + 8rem));
+
   max-height: 90vh;
+
   margin: 0;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 1rem;
 }
 
-/* [prev] gap [image] gap [next] */
 .gallery-lightbox-stage {
   display: grid;
+
   grid-template-columns: 3rem minmax(0, auto) 3rem;
+
   column-gap: 1rem;
+
   align-items: center;
+
   width: fit-content;
+
   max-width: 100%;
 }
 
-/* hugs the rendered image, so the close button anchors to the image itself */
 .gallery-lightbox-image-wrap {
   position: relative;
+
   line-height: 0;
 }
 
 .gallery-lightbox-image {
   display: block;
 
-  /* viewport minus 2 buttons (6rem) and 2 gaps (2rem) */
   max-width: min(calc(90vw - 8rem), 1200px);
+
   max-height: 82vh;
 
   width: auto;
+
   height: auto;
 
   object-fit: contain;
@@ -343,6 +439,7 @@ header {
 
 .gallery-lightbox-title {
   color: white;
+
   text-align: center;
 }
 
@@ -350,22 +447,29 @@ header {
 .gallery-lightbox-prev,
 .gallery-lightbox-next {
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 3rem;
+
   height: 3rem;
+
   padding: 0;
 
   border: 0;
+
   border-radius: 50%;
 
   background: rgb(0 0 0 / 0.55);
+
   color: white;
 
   cursor: pointer;
 
   opacity: 1;
+
   transition: background 0.2s ease;
 }
 
@@ -373,27 +477,38 @@ header {
 .gallery-lightbox-prev svg,
 .gallery-lightbox-next svg {
   display: block;
+
   width: 1.25rem;
+
   height: 1.25rem;
+
   fill: none;
+
   stroke: currentColor;
+
   stroke-width: 2;
+
   stroke-linecap: round;
+
   stroke-linejoin: round;
 }
 
-/* close: top-right corner of the image */
 .gallery-lightbox-close {
   position: absolute;
+
   top: 1rem;
+
   right: 1rem;
+
   z-index: 2;
 }
 
 .gallery-lightbox-prev,
 .gallery-lightbox-next {
   position: relative;
+
   z-index: 2;
+
   border: 1px solid rgb(255 255 255 / 0.35);
 }
 
@@ -412,49 +527,42 @@ body.lightbox-open {
 }
 
 /* ==========================================================================
+
    Studies in motion (media stages)
+
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Media stages
+   -------------------------------------------------------------------------- */
 
 .stage-section {
   margin-top: 3.5rem;
 }
 
-.stage-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.stage-eyebrow {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--pink);
-}
-
-.stage-title {
-  margin: 0.5rem 0 0;
-  font-size: 1.875rem;
-  line-height: 1;
-}
-
 .stage-grid {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
+
   gap: 1rem;
 }
 
 .media-stage {
   position: relative;
+
   display: grid;
+
   place-items: center;
+
   overflow: hidden;
+
   border: 1px solid var(--border);
+
   border-radius: var(--radius);
+
   background-color: var(--card);
+
   margin-bottom: 3rem;
 }
 
@@ -472,43 +580,42 @@ body.lightbox-open {
 
 .media-stage-placeholder {
   position: absolute;
+
   inset: 0;
+
   display: grid;
+
   place-items: center;
 }
 
-.media-stage-label {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--muted-foreground);
+.media-stage-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
 }
 
 .media-stage img,
 .media-stage video {
   display: block;
+
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
 }
 
-@media (min-width: 640px) {
-  .stage-title {
-    font-size: 3rem;
-  }
+/* --------------------------------------------------------------------------
+   Cards and previews
+   -------------------------------------------------------------------------- */
 
-  .stage-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .media-stage--wide {
-    grid-column: 1 / -1;
-  }
-}
 .card {
   border-radius: 6px;
+
   overflow: hidden;
+
   transition:
     transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
     /* slight overshoot = bouncy */ box-shadow 0.25s ease,
@@ -517,55 +624,75 @@ body.lightbox-open {
 
 .card:hover {
   transform: translateY(-8px);
+
   box-shadow: 0 14px 28px oklch(0.15 0.015 270 / 0.25);
 }
 
 .card-link {
   display: block;
+
   text-decoration: none;
+
   color: inherit;
 }
 
 .preview-box {
   position: relative;
+
   width: 100%;
+
   aspect-ratio: var(--card-ratio, 2 / 3);
+
   margin: 0;
+
   overflow: hidden;
 }
 
 .preview-box video,
 .preview-box img {
   display: block;
+
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
 }
 
 .preview-box video {
-  pointer-events: none; /* clicks go to the link */
+  pointer-events: none;
+  /* clicks go to the link */
 }
 
 .preview-frame {
   display: block;
+
   border: 0;
+
   pointer-events: none;
+
   transform-origin: top left;
 }
 
-/* Replace everything from `.banner-modal {` down to and including
-   `.banner-modal-frame[hidden], ... { display: none; }` with this block. */
+/* --------------------------------------------------------------------------
+   Banner modal
+   -------------------------------------------------------------------------- */
 
 .banner-modal {
   width: min(70vw, 470px);
+
   max-width: calc(100vw - 2rem);
+
   max-height: calc(100vh - 2rem);
 
   height: auto;
 
   padding: 0;
+
   border: 0;
+
   border-radius: 0.5rem;
+
   overflow: visible;
 
   background: transparent;
@@ -573,86 +700,116 @@ body.lightbox-open {
 
 .banner-modal::backdrop {
   background: transparent;
+
   backdrop-filter: blur(8px);
 }
 
-/* banner (iframe): 2:3 box that always fits the viewport height */
 .banner-modal:has(.banner-modal-frame:not([hidden])) {
   width: min(70vw, 500px, calc((100dvh - 4rem) * 2 / 3));
+
   height: auto;
 }
 
 .banner-modal-frame {
   display: block;
+
   width: 100%;
+
   aspect-ratio: 2 / 3;
+
   height: auto;
+
   margin: 0;
+
   border: 0;
 }
 
-/* video / image: one large box with breathing room */
 .banner-modal:has(.banner-modal-video-wrap:not([hidden])),
 .banner-modal:has(.banner-modal-image:not([hidden])) {
   width: min(86vw, 1200px);
+
   max-width: 86vw;
+
   height: calc(100dvh - 8rem);
 }
 
-/* center the shrink-wrapped video inside the dialog */
 .banner-modal[open]:has(.banner-modal-video-wrap:not([hidden])) {
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 }
 
-/* wrapper hugs the rendered video, so the button anchors to the video itself */
 .banner-modal-video-wrap {
   position: relative;
+
   display: inline-block;
+
   line-height: 0;
 }
 
 .banner-modal-video {
   display: block;
+
   width: auto;
+
   height: auto;
+
   max-width: min(86vw, 1200px);
+
   max-height: calc(100dvh - 8rem);
+
   margin: 0;
+
   border-radius: 0.5rem;
+
   background: transparent;
 }
 
 .banner-modal-image {
   display: block;
+
   width: 100%;
+
   height: 100%;
+
   margin: 0;
+
   object-fit: contain;
+
   border-radius: 0.5rem;
+
   background: transparent;
 }
 
-/* mute button: anchored to the video's own top-right corner */
 .banner-modal-mute {
   position: absolute;
+
   top: 0.75rem;
+
   right: 0.75rem;
+
   z-index: 10;
 
   width: 2.5rem;
+
   height: 2.5rem;
+
   padding: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border: 0;
+
   border-radius: 0.25rem;
 
   background: rgb(15 15 15 / 0.72);
+
   color: white;
 
   cursor: pointer;
@@ -664,18 +821,23 @@ body.lightbox-open {
 
 .banner-modal-mute:hover {
   background: rgb(15 15 15 / 0.95);
+
   transform: scale(1.05);
 }
 
 .banner-modal-mute:focus-visible {
   outline: 2px solid white;
+
   outline-offset: 2px;
 }
 
 .banner-modal-mute-icon {
   width: 1.35rem;
+
   height: 1.35rem;
+
   fill: currentColor;
+
   display: none;
 }
 
@@ -703,16 +865,25 @@ body.lightbox-open {
   display: none;
 }
 
+/* --------------------------------------------------------------------------
+   Perelyn gallery
+   -------------------------------------------------------------------------- */
+
 .perelyn-gallery {
   margin-top: 3.5rem;
 }
 
 .perelyn-stage {
   position: relative;
+
   width: 100%;
+
   aspect-ratio: 16 / 10;
+
   overflow: hidden;
+
   border-radius: 0.5rem;
+
   background: var(--card);
 }
 
@@ -722,50 +893,71 @@ body.lightbox-open {
 
 .perelyn-image-home-page {
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   object-position: top;
 }
 
 .perelyn-image-1 {
   width: 100%;
+
   height: 100%;
+
   object-fit: contain;
+
   object-position: top;
 }
 
 .perelyn-image-2 {
   width: 100%;
+
   height: 100%;
+
   object-fit: fill;
+
   object-position: top;
 }
 
 .perelyn-secondary-grid {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1rem;
+
   margin-top: 1rem;
 }
 
 .perelyn-link {
   position: absolute;
+
   right: 1rem;
+
   bottom: 1rem;
 
   display: inline-flex;
+
   align-items: center;
+
   gap: 0.5rem;
 
   padding: 0.5rem 1rem;
+
   border-radius: 999px;
 
   background: var(--background);
+
   color: var(--foreground);
 
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   text-decoration: none;
 
   box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
@@ -775,51 +967,79 @@ body.lightbox-open {
   opacity: 0.85;
 }
 
+/* --------------------------------------------------------------------------
+   Embedded video
+   -------------------------------------------------------------------------- */
+
 .video-feature {
   margin: 0;
+
   width: 100%;
+
   margin-bottom: 3rem;
 }
 
 .video-feature video {
   display: block;
+
   width: 100%;
+
   height: auto;
+
   max-height: 85vh;
+
   background: #000;
 }
 
 .video-feature--youtube iframe {
   display: block;
+
   width: 100%;
+
   aspect-ratio: 16 / 9;
+
   height: auto;
+
   border: 0;
+
   background: #000;
 }
 
+/* --------------------------------------------------------------------------
+   Work details and back link
+   -------------------------------------------------------------------------- */
+
 .work-info {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
   gap: 2rem;
+
   align-items: start;
+
   margin-block: 1.5rem;
 }
 
 .work-info .gallery {
   margin: 0;
+
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr));
+
   gap: 0.75rem;
 }
 
 .work-description {
   line-height: 1.6;
+
   color: var(--muted-foreground);
+
   text-align: justify;
 }
 
 .card-size {
   font-size: 0.75rem;
+
   color: #6b6b6b;
 }
 
@@ -829,11 +1049,17 @@ body.lightbox-open {
 
 .back-link {
   display: inline-block;
+
   margin-bottom: 1.5rem;
+
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   color: var(--muted-foreground);
+
   text-decoration: none;
 }
 
@@ -842,38 +1068,57 @@ body.lightbox-open {
 }
 
 /* ==========================================================================
+
    Profile grid (profile / portrait / toolbox / showreel)
+
    ========================================================================== */
 
 .profile-grid {
   margin-top: 2.5rem;
+
   display: grid;
+
   gap: 0.75rem;
 }
+
+/* --------------------------------------------------------------------------
+   Profile grid and cards
+   -------------------------------------------------------------------------- */
 
 .raster-dots {
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.08) 1px,
+
     transparent 1px
   );
+
   background-size: 12px 12px;
+
   background-position: center;
 }
 
 /* profile card */
+
 .profile-card {
   position: relative;
+
   overflow: hidden;
+
   border-radius: 0.75rem;
+
   background-color: var(--lime);
+
   padding: 1.5rem;
+
   color: var(--ink);
 }
 
 .profile-card-header {
   display: flex;
+
   align-items: flex-start;
+
   justify-content: space-between;
 }
 
@@ -890,6 +1135,7 @@ body.lightbox-open {
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -901,32 +1147,47 @@ body.lightbox-open {
 
 .profile-card h2 {
   margin: 0;
+
   font-size: clamp(1.75rem, 2vw, 2.5rem);
+
   line-height: 0.9;
+
   letter-spacing: -0.04em;
 }
 
 .profile-card p {
   margin-top: 1.25rem;
+
   max-width: 22rem;
+
   font-size: 0.875rem;
+
   line-height: 1.6;
 }
 
 /* portrait card */
+
 .portrait-card {
   position: relative;
+
   min-height: 16rem;
+
   overflow: hidden;
+
   border-radius: 0.75rem;
+
   background-color: var(--muted);
 }
 
 .portrait-card img {
   display: block;
+
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   transition: transform 0.7s ease;
 }
 
@@ -936,49 +1197,73 @@ body.lightbox-open {
 
 .portrait-overlay {
   position: absolute;
+
   inset-inline: 0;
+
   bottom: 0;
+
   display: flex;
+
   align-items: end;
+
   justify-content: space-between;
+
   padding: 1rem;
+
   padding-top: 5rem;
+
   background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
 }
 
 .portrait-name {
   color: var(--lime);
+
   letter-spacing: 0.04em;
 }
 
 .portrait-role {
   margin-top: 0.25rem;
+
   font-size: 0.75rem;
+
   color: rgba(255, 255, 255, 0.8);
 }
 
 .portrait-arrow {
   color: var(--lime);
+
   width: 1.125rem;
+
   height: 1.125rem;
 }
 
 /* toolbox card */
+
 .toolbox-card {
   overflow: hidden;
+
   border-radius: 0.75rem;
+
   background-color: var(--violet);
+
   padding: 1.25rem;
+
   color: var(--ink);
+
   display: flex;
+
   flex-direction: column;
+
   min-height: 0;
 }
 
 .toolbox-header {
   display: flex;
+
   align-items: flex-start;
+
   justify-content: space-between;
+
   flex-shrink: 0;
 }
 
@@ -988,28 +1273,43 @@ body.lightbox-open {
 
 .toolbox-grid {
   display: grid;
+
   grid-template-columns: repeat(5, minmax(0, 1fr));
+
   grid-template-rows: repeat(2, minmax(0, 1fr));
+
   gap: 0.25rem;
+
   width: 100%;
+
   max-width: 100%;
 }
 
 .tool {
   position: relative;
+
   min-width: 0;
 }
 
 .tool-button {
   position: relative;
+
   display: block;
+
   aspect-ratio: 1 / 1;
+
   width: 100%;
+
   overflow: hidden;
+
   border: 1px solid rgba(17, 17, 17, 0.1);
+
   border-radius: 0.5rem;
+
   background-color: rgba(255, 255, 255, 0.15);
+
   padding: 0;
+
   transition:
     transform 0.3s ease,
     background-color 0.3s ease;
@@ -1017,29 +1317,45 @@ body.lightbox-open {
 
 .tool:hover .tool-button {
   transform: translateY(-2px);
+
   background-color: var(--background);
 }
 
 .tool img {
   position: absolute;
+
   inset: 0.5rem;
+
   width: calc(100% - 1rem);
+
   height: calc(100% - 1rem);
+
   object-fit: contain;
 }
 
 .tool-tip {
   position: absolute;
+
   left: 50%;
+
   top: -2rem;
+
   z-index: 10;
+
   display: none;
+
   transform: translateX(-50%);
+
   white-space: nowrap;
+
   border-radius: 0.25rem;
+
   background-color: var(--ink);
+
   padding: 0.25rem 0.5rem;
+
   font-size: 0.5rem;
+
   color: white;
 }
 
@@ -1048,42 +1364,69 @@ body.lightbox-open {
 }
 
 /* showreel card */
+
 .showreel-button {
   position: relative;
+
   display: flex;
-  align-items: stretch; /* CHANGED: was flex-start, lets the content fill tall cards */
+
+  align-items: stretch;
+  /* CHANGED: was flex-start, lets the content fill tall cards */
+
   width: 100%;
+
   overflow: hidden;
+
   border: 0;
+
   border-radius: 0.75rem;
+
   background-color: var(--petrol);
+
   padding: 1.25rem;
+
   text-align: left;
+
   color: white;
+
   cursor: pointer;
 }
 
 .showreel-button-inner {
   position: relative;
+
   z-index: 1;
+
   width: 100%;
-  display: flex; /* CHANGED: column layout so the bars can grow */
+
+  display: flex;
+  /* CHANGED: column layout so the bars can grow */
+
   flex-direction: column;
 }
 
 .showreel-header {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 }
 
 .showreel-preview {
   position: absolute;
+
   inset: 0;
+
   width: 100%;
+
   height: 100%;
+
   object-fit: fit;
-  pointer-events: none; /* clicks go to the button, so the modal opens */
+
+  pointer-events: none;
+  /* clicks go to the button, so the modal opens */
+
   transition: opacity 0.3s ease;
 }
 
@@ -1092,27 +1435,38 @@ body.lightbox-open {
 }
 
 /* ==========================================================================
+
    Marquee
+
    ========================================================================== */
 
 .marquee {
   margin-block: 3rem;
+
   overflow: hidden;
+
   border-block: 1px solid var(--border);
+
   background-color: var(--pink);
+
   padding: 0.75rem 0;
+
   color: var(--ink);
 }
 
 .marquee-track {
   display: flex;
+
   width: max-content;
+
   font-size: 1.25rem;
+
   animation: marquee 18s linear infinite;
 }
 
 .marquee-track span {
   white-space: nowrap;
+
   padding-right: 1.5rem;
 }
 
@@ -1120,55 +1474,77 @@ body.lightbox-open {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-25%);
   }
 }
 
 /* ==========================================================================
+
    About / CV
+
    ========================================================================== */
 
 .about {
   border-bottom: 1px solid var(--border);
+
   padding: 3.5rem 0;
 }
 
 .about-inner {
   display: grid;
+
   gap: 3rem;
+
   max-width: 1600px;
+
   margin: 0 auto;
+
   padding: 0 1.25rem;
 }
 
 .about .eyebrow {
   margin: 0;
+
   color: var(--pink);
 }
 
 .about-title {
   margin: 1rem 0 0;
+
   font-size: clamp(2.7rem, 8vw, 5.5rem);
+
   line-height: 0.9;
 }
 
 .about-text {
   max-width: 36rem;
+
   margin: 1.75rem 0 0;
+
   font-family: var(--font-sans);
+
   font-size: 1rem;
+
   line-height: 1.625;
+
   color: var(--muted-foreground);
 }
 
 .about-facts {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1.5rem;
+
   margin-top: 2.5rem;
+
   padding-top: 1.5rem;
+
   border-top: 1px solid var(--border);
+
   font-size: 0.875rem;
 }
 
@@ -1178,7 +1554,9 @@ body.lightbox-open {
 
 .fact-text {
   margin: 0.5rem 0 0;
+
   font-family: var(--font-sans);
+
   color: var(--muted-foreground);
 }
 
@@ -1188,7 +1566,9 @@ body.lightbox-open {
 
 .experience-item {
   display: grid;
+
   gap: 1rem;
+
   padding: 1.75rem 0;
 }
 
@@ -1198,11 +1578,13 @@ body.lightbox-open {
 
 .experience-dates {
   margin: 0;
+
   color: var(--muted-foreground);
 }
 
 .experience-company {
   margin: 0;
+
   font-size: 1.25rem;
 }
 
@@ -1212,80 +1594,117 @@ body.lightbox-open {
 
 .experience-role {
   margin: 0.25rem 0 0;
+
   color: var(--pink);
 }
 
 .experience-text {
   margin: 0;
+
   font-family: var(--font-sans);
+
   font-size: 0.875rem;
+
   line-height: 1.625;
+
   color: var(--muted-foreground);
 }
 
 /* ==========================================================================
+
    Selected work
+
    ========================================================================== */
 
 .work {
   max-width: 1600px;
+
   margin: 0 auto;
+
   padding: 4rem 1.25rem;
 }
 
 .work-header {
   display: grid;
+
   gap: 1rem;
+
   margin-bottom: 2.5rem;
+
   padding-bottom: 1.5rem;
+
   border-bottom: 1px solid var(--border);
 }
 
 .work-eyebrow {
   margin: 0 0 0.5rem;
+
   font-weight: 700;
+
   color: var(--muted-foreground);
 }
 
 .work-title {
   margin: 0;
+
   font-size: clamp(3rem, 8vw, 7rem);
+
   line-height: 0.88;
 }
 
 .work-intro {
   max-width: 20rem;
+
   margin: 0;
+
   font-family: var(--font-sans);
+
   font-size: 0.875rem;
+
   line-height: 1.625;
+
   color: var(--muted-foreground);
 }
 
 .work-grid {
   display: grid;
+
   gap: 1rem;
 }
 
 .work-card {
   position: relative;
+
   display: flex;
+
   flex-direction: column;
+
   min-height: 24rem;
+
   overflow: hidden;
+
   border-radius: 0.5rem;
+
   color: white;
+
   text-decoration: none;
+
   background-color: var(--petrol);
 }
 
 .work-card-image {
   position: absolute;
+
   inset: -2px;
+
   width: calc(100% + 4px);
+
   height: calc(100% + 4px);
+
   object-fit: cover;
+
   opacity: 0.75;
+
   transition:
     transform 0.7s ease,
     opacity 0.7s ease;
@@ -1293,14 +1712,18 @@ body.lightbox-open {
 
 .work-card:hover .work-card-image {
   transform: scale(1.05);
+
   opacity: 1;
 }
 
 .work-card-overlay {
   position: absolute;
+
   inset: 0;
+
   background: linear-gradient(
     to top,
+
     oklch(0.15 0.015 270 / 0.95),
     transparent,
     oklch(0.15 0.015 270 / 0.2)
@@ -1309,23 +1732,37 @@ body.lightbox-open {
 
 .work-card-content {
   position: relative;
+
   flex: 1;
+
   display: flex;
+
   flex-direction: column;
+
   justify-content: space-between;
+
   padding: 1.25rem;
 }
 
 .work-card-arrow {
   width: 1.25rem;
+
   height: 1.25rem;
+
   overflow: visible;
+
   fill: none;
+
   stroke: currentColor;
+
   stroke-width: 1.75;
+
   stroke-linecap: round;
+
   stroke-linejoin: round;
+
   transition: transform 0.2s ease;
+
   align-self: flex-end;
 }
 
@@ -1335,31 +1772,40 @@ body.lightbox-open {
 
 .work-card-discipline {
   margin: 0 0 0.5rem;
+
   color: var(--lime);
 }
 
 .work-card-title {
   margin: 0;
+
   white-space: pre-line;
+
   font-size: clamp(1rem, 4vw, 1.875rem);
+
   line-height: 0.9;
 }
 
 .tone-pink {
   background-color: var(--pink);
 }
+
 .tone-lime {
   background-color: var(--lime);
 }
+
 .tone-violet {
   background-color: var(--violet);
 }
+
 .tone-petrol {
   background-color: var(--petrol);
 }
 
 /* ==========================================================================
+
    Project page
+
    ========================================================================== */
 
 #project {
@@ -1368,8 +1814,11 @@ body.lightbox-open {
 
 .project-hero {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
+
   gap: 2rem;
+
   border-bottom: 1px solid var(--border);
 }
 
@@ -1379,35 +1828,49 @@ body.lightbox-open {
 
 .project-number {
   margin: 0 0 1.25rem;
+
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   color: var(--lime);
 }
 
 .project-title {
   margin: 0;
+
   font-size: clamp(3rem, 5vw, 7rem);
+
   line-height: 0.8;
+
   white-space: pre-line;
 }
 
 .project-subtitles {
   margin: 3rem 0 3rem;
+
   display: grid;
+
   gap: 0.5rem;
 }
 
 .project-subtitle-japanese {
   margin: 0;
+
   font-size: 0.875rem;
+
   line-height: 1;
+
   color: var(--pink);
 }
 
 .project-subtitle {
   margin: 0;
+
   font-size: clamp(1.5rem, 3vw, 2.5rem);
+
   line-height: 0.95;
 }
 
@@ -1417,20 +1880,31 @@ body.lightbox-open {
 
 .project-description {
   margin: 0;
+
   font-family: var(--font-sans);
+
   font-size: 1rem;
+
   line-height: 1.625;
+
   color: var(--muted-foreground);
 }
 
 .project-meta {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 1.25rem;
+
   margin-top: 2rem;
+
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   color: var(--muted-foreground);
 }
 
@@ -1444,56 +1918,82 @@ body.lightbox-open {
 
 .project-image {
   display: block;
+
   width: 100%;
+
   border-radius: 0.5rem;
 }
 
 .project-link {
   display: inline-block;
+
   margin-top: 1.5rem;
+
   padding: 0.75rem 1.25rem;
+
   border-radius: 9999px;
+
   background: var(--pink);
+
   color: var(--ink);
+
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   text-decoration: none;
 }
 
 .project-images {
   display: grid;
+
   gap: 1rem;
 }
 
 .project-images img {
   width: 100%;
+
   border-radius: 0.5rem;
 }
 
 /* ==========================================================================
+
    Footer
+
    ========================================================================== */
 
 .footer {
   position: relative;
+
   margin-inline: calc(-1 * var(--page-pad));
+
   border-top: 1px solid var(--border);
+
   padding: 2rem var(--page-pad);
+
   background-color: var(--background);
+
   background-image: radial-gradient(
     circle,
     rgba(17, 17, 17, 0.08) 1px,
+
     transparent 1px
   );
+
   background-size: 12px 12px;
+
   background-position: center;
 }
 
 .footer-inner {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr) repeat(3, auto);
+
   align-items: end;
+
   gap: 1rem;
 }
 
@@ -1503,40 +2003,63 @@ body.lightbox-open {
 
 .footer-title {
   margin: 0;
+
   font-size: 1.25rem;
+
   font-weight: 700;
+
   line-height: 1;
+
   letter-spacing: -0.04em;
+
   color: var(--ink);
 }
 
 .footer-meta {
   margin-top: 0.75rem;
+
   white-space: pre-line;
+
   font-size: 0.75rem;
+
   line-height: 1.6;
+
   color: var(--muted-foreground);
 }
 
 /* The email control is now a <button>, so reset the button defaults.
+
    Everything else comes from your existing .footer-link rules. */
+
 button.footer-link {
   padding: 0;
+
   cursor: pointer;
+
   font: inherit;
 }
 
 .footer-link {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   width: 2.75rem;
+
   height: 2.75rem;
+
   border: 1px solid var(--border);
+
   border-radius: 9999px;
+
   color: var(--ink);
+
   background: transparent;
+
   text-decoration: none;
+
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease;
@@ -1544,24 +2067,31 @@ button.footer-link {
 
 .footer-link:hover {
   background-color: var(--card);
+
   border-color: var(--muted);
 }
 
 .footer-link img {
   display: block;
+
   width: 1.5rem;
+
   height: 1.5rem;
+
   object-fit: contain;
 }
 
 .footer-link svg {
   width: 1rem;
+
   height: 1rem;
 }
 
 /* ==========================================================================
-   Media queries (smallest breakpoint first)
+   Media queries
+   Keep all responsive and accessibility overrides at the end of the file.
    ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1572,6 +2102,7 @@ button.footer-link {
   html {
     scroll-padding-top: var(--nav-h, 6.5rem);
   }
+
   .gallery-lightbox {
     padding: 1rem;
   }
@@ -1580,6 +2111,7 @@ button.footer-link {
   .gallery-lightbox-prev,
   .gallery-lightbox-next {
     width: 2.5rem;
+
     height: 2.5rem;
   }
 
@@ -1587,46 +2119,65 @@ button.footer-link {
   .gallery-lightbox-prev svg,
   .gallery-lightbox-next svg {
     width: 1rem;
+
     height: 1rem;
   }
 
   .gallery-lightbox-stage {
     grid-template-columns: 2.5rem minmax(0, auto) 2.5rem;
+
     column-gap: 0.5rem;
   }
 
   .gallery-lightbox-close {
     top: 0.25rem;
+
     right: 0.25rem;
   }
 
   .gallery-lightbox-image {
-    /* viewport minus 2 buttons (5rem) and 2 gaps (1rem) */
     max-width: min(calc(90vw - 6rem), 1200px);
+
     max-height: 78vh;
   }
+
   body {
-    padding-top: 6.5rem; /* stacked nav is taller; adjust to match */
+    padding-top: 6.5rem;
   }
 
   .nav-container {
     grid-template-columns: 1fr;
+
     gap: 0.75rem;
   }
 
   .nav {
     margin: 0;
+
     width: 100%;
+
     justify-content: center;
+
     flex-wrap: wrap;
   }
 
   .nav a {
     padding: 0.5rem 0.9rem;
   }
+
+  .stage-title {
+    font-size: 3rem;
+  }
+
+  .stage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .media-stage--wide {
+    grid-column: 1 / -1;
+  }
 }
 
-/* <= 639px: mobile stacking, showreel first (ADDED) */
 @media (max-width: 639px) {
   .showreel-button {
     order: -1;
@@ -1635,22 +2186,24 @@ button.footer-link {
   .hero .relative-block {
     transform: translateX(-2rem);
   }
+
   .hero h1 .line--pink {
     position: relative;
+
     left: var(--hero-static-offset, 0px);
+
     font-size: 1.1em;
+
     font-weight: 900;
   }
 }
 
-/* <= 480px */
 @media (max-width: 480px) {
   .toolbox-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-/* >= 640px */
 @media (min-width: 640px) {
   :root {
     --page-pad: 2rem;
@@ -1662,8 +2215,11 @@ button.footer-link {
 
   .hero h1 {
     flex-direction: row;
+
     justify-content: center;
+
     gap: 0.2em;
+
     font-size: clamp(3rem, 8vw, 9rem);
   }
 
@@ -1685,6 +2241,7 @@ button.footer-link {
 
   .work-header {
     grid-template-columns: 1fr auto;
+
     align-items: end;
   }
 
@@ -1705,41 +2262,48 @@ button.footer-link {
   .work-info {
     grid-template-columns: 1fr;
   }
+
   .perelyn-secondary-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* 640-1023px: tablet layouts (covers 700-750) */
 @media (min-width: 640px) and (max-width: 1023.98px) {
-  /* Profile grid (SWAPPED): showreel on top (full width), portrait left (tall),
-     toolbox + profile card stacked right */
   .profile-grid {
     grid-template-columns: 1fr 1fr;
+
     grid-template-rows: auto auto auto;
   }
 
   .showreel-button {
     grid-column: 1 / -1;
+
     grid-row: 1;
+
     min-height: 10rem;
   }
 
   .portrait-card {
     grid-column: 1;
+
     grid-row: 2 / span 2;
+
     min-height: 22rem;
   }
 
   .toolbox-card {
     grid-column: 2;
+
     grid-row: 2;
   }
 
   .profile-card {
     grid-column: 2;
+
     grid-row: 3;
+
     min-height: 10rem;
+
     padding: 1rem;
   }
 
@@ -1749,11 +2313,12 @@ button.footer-link {
 
   .profile-card p {
     margin-top: 0.75rem;
+
     font-size: 0.8rem;
+
     line-height: 1.4;
   }
 
-  /* Work: lead card spans the full row, the rest pair up */
   .work-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1764,12 +2329,13 @@ button.footer-link {
 
   .work-card:first-child {
     grid-column: 1 / -1;
+
     min-height: 26rem;
   }
 
-  /* About: dates + company on the left, copy on the right */
   .experience-item {
     grid-template-columns: 6rem 1fr;
+
     column-gap: 1.5rem;
   }
 
@@ -1777,7 +2343,6 @@ button.footer-link {
     grid-column: 2;
   }
 
-  /* Project: stacked hero */
   .project-hero {
     grid-template-columns: 1fr;
   }
@@ -1787,7 +2352,6 @@ button.footer-link {
   }
 }
 
-/* >= 1024px */
 @media (min-width: 1024px) {
   :root {
     --page-pad: 2.5rem;
@@ -1799,26 +2363,31 @@ button.footer-link {
 
   .profile-grid {
     grid-template-columns: 1.1fr 0.55fr 1fr;
+
     grid-template-rows: 12rem 12rem;
   }
 
-  /* SWAPPED: showreel takes the tall slot in column 1 */
   .showreel-button {
     grid-column: 1;
+
     grid-row: 1 / span 2;
+
     min-height: 0;
   }
 
   .portrait-card {
     grid-column: 2;
+
     grid-row: 1 / span 2;
   }
 
-  /* SWAPPED: profile card takes the short slot in column 3, row 2 */
   .profile-card {
     grid-column: 3;
+
     grid-row: 2;
+
     min-height: 12rem;
+
     padding: 1rem;
   }
 
@@ -1828,19 +2397,23 @@ button.footer-link {
 
   .profile-card p {
     margin-top: 0.75rem;
+
     font-size: 0.8rem;
+
     line-height: 1.4;
   }
 
-  /* toolbox: let the 2 rows share the card's remaining height */
   .toolbox-card {
     min-height: 0;
+
     padding: 1rem;
   }
 
   .toolbox-grid {
     flex: 1;
+
     min-height: 0;
+
     margin-top: 0.75rem;
   }
 
@@ -1850,17 +2423,21 @@ button.footer-link {
 
   .tool-button {
     aspect-ratio: auto;
+
     height: 100%;
   }
 
   .tool img {
     inset: 0.375rem;
+
     width: calc(100% - 0.75rem);
+
     height: calc(100% - 0.75rem);
   }
 
   .about-inner {
     grid-template-columns: 0.75fr 1.25fr;
+
     padding: 0 3rem;
   }
 
@@ -1878,12 +2455,15 @@ button.footer-link {
 
   .work-card {
     grid-column: span 3;
+
     min-height: 22rem;
   }
 
   .work-card:nth-child(1) {
     grid-column: span 5;
+
     grid-row: span 2;
+
     min-height: 46rem;
   }
 
@@ -1897,19 +2477,25 @@ button.footer-link {
 
   .project-hero {
     grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+
     align-items: end;
   }
 
   .project-heading {
     grid-column: 1;
+
     grid-row: 1;
   }
+
   .project-info {
     grid-column: 2;
+
     grid-row: 1;
   }
+
   .project-subtitles {
     grid-column: 1;
+
     grid-row: 2;
   }
 }
@@ -1917,6 +2503,7 @@ button.footer-link {
 @media (max-width: 639px) {
   .showreel-button {
     min-height: 16rem;
+
     padding: 1rem;
   }
 
