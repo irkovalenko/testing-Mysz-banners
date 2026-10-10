@@ -6,7 +6,8 @@ import { openMedia } from "../components/modal.js";
 const root = document.querySelector("#project");
 if (!root) throw new Error('Missing <div id="project"></div> in project.html');
 
-const slug = new URLSearchParams(location.search).get("p");
+/* const slug = new URLSearchParams(location.search).get("p"); */
+const slug = document.body.dataset.slug;
 const project = projects.find((item) => item.slug === slug);
 
 if (!project) {
