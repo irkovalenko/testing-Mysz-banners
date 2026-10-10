@@ -5,40 +5,14 @@
   --foreground: oklch(0.18 0.015 270);
   --card: oklch(0.99 0.004 90);
   --card-foreground: oklch(0.18 0.015 270);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.61 0.14 350);
-  --primary-foreground: oklch(0.99 0.004 90);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.91 0.01 90);
   --muted-foreground: oklch(0.47 0.02 270);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.78 0.015 270);
-  --input: oklch(0.78 0.015 270);
-  --ring: oklch(0.61 0.14 350);
   --pink: oklch(0.72 0.13 350);
   --lime: oklch(0.84 0.12 115);
   --violet: oklch(0.76 0.09 292);
   --petrol: oklch(0.53 0.065 220);
   --ink: oklch(0.15 0.015 270);
-  --panel: oklch(0.99 0.004 90);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
   --font-sans: "Space Grotesk", sans-serif;
   --font-display: "Archivo Black", sans-serif;
 }
@@ -271,18 +245,6 @@ header {
 .hero h1 .line--pink {
   margin-left: 0;
   color: var(--pink);
-}
-
-@media (max-width: 639px) {
-  .hero .relative-block {
-    transform: translateX(-2rem);
-  }
-  .hero h1 .line--pink {
-    position: relative;
-    left: var(--hero-static-offset, 0px);
-    font-size: 1.1em;
-    font-weight: 900;
-  }
 }
 
 /* ==========================================================================
@@ -1668,6 +1630,16 @@ button.footer-link {
 @media (max-width: 639px) {
   .showreel-button {
     order: -1;
+  }
+
+  .hero .relative-block {
+    transform: translateX(-2rem);
+  }
+  .hero h1 .line--pink {
+    position: relative;
+    left: var(--hero-static-offset, 0px);
+    font-size: 1.1em;
+    font-weight: 900;
   }
 }
 
