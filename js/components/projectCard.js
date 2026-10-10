@@ -1,9 +1,6 @@
 const siteRoot = new URL("../../", import.meta.url);
 export function createProjectCard(project) {
-  const href = new URL(
-    `pages/projects/project.html?p=${project.slug}`,
-    siteRoot,
-  ).href;
+  const href = new URL(`projects/${project.slug}`, siteRoot).href;
   return `
     <a class="work-card tone-${project.tone}" href="${href}">
       <img class="work-card-image" src="${project.image}" alt=""
